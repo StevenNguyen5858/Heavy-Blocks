@@ -8,11 +8,12 @@ void buttonFunctions(button b){
   String name = b.getName();
   
   if(name.equals("Levels")){
-    activatePage(levels); 
+    activatePage(levelsP); 
   }
   if(name.equals("Play")){
     activatePage(play1); 
     setgBIA();
+    setupLevel();
   }
   if(name.equals("escToMainScreen")){
     activatePage(main);

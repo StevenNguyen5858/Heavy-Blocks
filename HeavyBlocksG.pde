@@ -12,9 +12,10 @@ void setup(){
  background(150);
  setupButtons();
  setupShapes();
- setupLevels();
+ setupPresets();
  setupPages();
  setupAnimate();
+ setupLevels();
 }
 void draw(){
   //draw page if willDrawScreen:

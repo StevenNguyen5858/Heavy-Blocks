@@ -99,7 +99,7 @@ class shape{
   }
   boolean isActive(){
     return isActive;
-  }
+  } 
 }
 
 int[][] randomShape(){

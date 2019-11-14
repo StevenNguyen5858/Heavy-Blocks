@@ -15,19 +15,23 @@ int waitTimePlayerGravity = -500;
 boolean playerWalkCycle = true;
 int nowPlayerWalk = -50;
 int waitTimePlayerWalk = -50;
-
-
+int[] lvlX0;
+int[] lvlY0;
+int[] shapes0;
+int startX0;
+int startY0;
+int plannedIndex0 = 0;
 void setupAnimate(){
  
 }
 //Animation Compiling methods:
 void animateFallingBlocks(){
     if(waitedOnce == false && pressedContinue == false && pressedSave == false){
-      block.setX(plannedX.get(lvl-1)[plannedIndex[lvl-1]]);
-      block.setY(plannedY.get(lvl-1)[plannedIndex[lvl-1]]);  
-      player1.setX(plannedPlayerX.get(lvl-1));
-      player1.setY(plannedPlayerY.get(lvl-1)); 
-      block.setShape(shapes.get(plannedS.get(lvl-1)[plannedIndex[lvl-1]]));
+      block.setX(lvlX0[plannedIndex0]);
+      block.setY(lvlY0[plannedIndex0]);  
+      player1.setX(startX0);
+      player1.setY(startY0); 
+      block.setShape(shapes.get(shapes0[plannedIndex0]));
     }
     if(customCycle && waitedOnce==true){
       nowCustom = millis();
@@ -121,12 +125,12 @@ void prepDropBlocks(){
       }
     }
   }else{
-    if(plannedIndex[lvl-1]==plannedX.get(lvl-1).length-1){
+    if(lvlX0[lvl-1]==lvlX0.length-1){
       //-winmethod-
       hasControl.set(lvl-1,false);
     }else{
       //new block ish
-      plannedIndex[lvl-1]++;
+      plannedIndex0++;
       //add current blocks to a log
       for(int y = 0; y<3; y++){
         for(int x = 0; x<3; x++){
@@ -137,9 +141,9 @@ void prepDropBlocks(){
       }
       PBEquals();
       // set new block data to presets
-      block.setX(plannedX.get(lvl-1)[plannedIndex[lvl-1]]);
-      block.setY(plannedY.get(lvl-1)[plannedIndex[lvl-1]]);
-      block.setShape(shapes.get(plannedS.get(lvl-1)[plannedIndex[lvl-1]]));
+      block.setX(lvlX0[plannedIndex0]);
+      block.setY(lvlY0[plannedIndex0]);
+      block.setShape(shapes.get(shapes0[plannedIndex0]));
     }
   }
 }

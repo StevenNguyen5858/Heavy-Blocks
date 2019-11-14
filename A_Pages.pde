@@ -1,17 +1,17 @@
 ArrayList<page> pages = new ArrayList<page>();
 page main = new page();
-page levels = new page();
+page levelsP = new page();
 page play1 = new page();
 page play2 = new page();
 page pause = new page();
 void setupPages(){
   main = new page(mainScreenButtons,true,false,"main");
-  levels = new page(levelsScreenButtons,false,false,"levels");
+  levelsP = new page(levelsScreenButtons,false,false,"levels");
   play1 = new page(play1ScreenButtons,false,false,"play1");
   play2 = new page(play2ScreenButtons,false,false,"play2");
   pause = new page(pauseScreenButtons,false,false,"pause"); 
   pages.add(main);
-  pages.add(levels);
+  pages.add(levelsP);
   pages.add(play1);
   pages.add(play2);
   pages.add(pause);
