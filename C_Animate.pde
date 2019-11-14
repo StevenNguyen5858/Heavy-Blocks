@@ -15,12 +15,19 @@ int waitTimePlayerGravity = -500;
 boolean playerWalkCycle = true;
 int nowPlayerWalk = -50;
 int waitTimePlayerWalk = -50;
+
+
 int[] lvlX0;
 int[] lvlY0;
 int[] shapes0;
+
 int startX0;
 int startY0;
 int plannedIndex0 = 0;
+
+boolean hasControl0 = false;
+int winX0;
+int winY0;
 void setupAnimate(){
  
 }
@@ -31,6 +38,7 @@ void animateFallingBlocks(){
       block.setY(lvlY0[plannedIndex0]);  
       player1.setX(startX0);
       player1.setY(startY0); 
+      System.out.println(player1.getY() + "---");
       block.setShape(shapes.get(shapes0[plannedIndex0]));
     }
     if(customCycle && waitedOnce==true){
@@ -61,6 +69,13 @@ void animateFallingBlocks(){
     //drawBinaryBlocks();
     drawBinaryBlocksPB();
     drawPageButtons(play2);
+    System.out.println(player1.getX() + "x");
+    System.out.println(player1.getY() + "y");
+    System.out.println(winX0 + "Winx");
+    System.out.println(winY0 + "Winy");
+    if(player1.getX()==winX0 && player1.getY()==winY0){
+      activatePage(winP);
+    }
 }
 
 void animatePlayerClimbing(){
@@ -125,9 +140,9 @@ void prepDropBlocks(){
       }
     }
   }else{
-    if(lvlX0[lvl-1]==lvlX0.length-1){
+    if(plannedIndex0>=lvlX0.length-1){
       //-winmethod-
-      hasControl.set(lvl-1,false);
+      hasControl0 = false;
     }else{
       //new block ish
       plannedIndex0++;

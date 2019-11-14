@@ -46,6 +46,12 @@ void screenLayout(page p){
    defaultText(0,0,30);
    text("Level " + lvl,sW/2-(textWidth("Levels")/2),50);  
  }
+ if(name.equals("winP.pg")){
+   basicCorners(lvl);
+   
+   defaultText(0,0,30);
+   text("TaskAccomplished " + lvl,sW/2-(textWidth("TaskAccomplished")/2),50); 
+ }
 }
 void drawPageButtons(page p){
   String name = p.specialFunctTag();

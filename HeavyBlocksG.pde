@@ -40,6 +40,7 @@ void draw(){
       playerWalkLeft();
     }*/
     
+    
   }
 }
 
@@ -62,7 +63,7 @@ void mousePressed(){
   }
 }
 void keyPressed(){
-  if(hasControl.get(lvl-1) && play2.isActive()){
+  if(hasControl0 && play2.isActive()){
     controls();
   }
   player1Controls();

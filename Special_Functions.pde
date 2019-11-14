@@ -22,6 +22,7 @@ void buttonFunctions(button b){
     lvl = b.getButtonTag();
     activatePage(play1);
     setgBIA();
+    setupLevel();
   }
   if(name.equals("PlayB")){
     activatePage(play2);
@@ -125,9 +126,6 @@ void resetBinaryBlocks(){
 
 void setgBIA(){
   for(int i = 0; i<gameBlocks.size(); i++){
-    System.out.println("------------------" + i);
-    System.out.println(gameBlockIsActive.get(lvl-1)[i]);
     gameBlocks.get(i).setIsActive(gameBlockIsActive.get(lvl-1)[i]);
-    System.out.println(gameBlocks.get(i).isActive());
   }
 }

@@ -17,16 +17,12 @@ int playerFrameWalk = 0;
 color playerColor = #CF00FF;
 void controls(){
   if(key == CODED){
-    System.out.println("CODED");
     if(keyCode == LEFT && blockCanMove(block.getX()-1,block.getY(),block.getShape(),false)){
       block.setX(block.getX()-1);  
-      System.out.println("left-1");
     }
     if(keyCode == RIGHT && blockCanMove(block.getX()+1,block.getY(),block.getShape(),false)){
       block.setX(block.getX()+1);  
-      System.out.println("right+1");
     }
-    System.out.println(block.getX());
   }
 }
 

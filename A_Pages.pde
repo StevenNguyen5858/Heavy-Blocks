@@ -4,12 +4,14 @@ page levelsP = new page();
 page play1 = new page();
 page play2 = new page();
 page pause = new page();
+page winP = new page();
 void setupPages(){
   main = new page(mainScreenButtons,true,false,"main");
   levelsP = new page(levelsScreenButtons,false,false,"levels");
   play1 = new page(play1ScreenButtons,false,false,"play1");
   play2 = new page(play2ScreenButtons,false,false,"play2");
   pause = new page(pauseScreenButtons,false,false,"pause"); 
+  winP = new page(winScreenButtons,false,false,"winP");
   pages.add(main);
   pages.add(levelsP);
   pages.add(play1);
