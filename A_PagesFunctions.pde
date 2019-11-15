@@ -1,3 +1,4 @@
+
 void activatePage(page p){
   if(p != main){
     typingCommands = false;  
@@ -60,11 +61,17 @@ void screenLayout(page p){
    defaultText(0,0,30);
    text("Level " + lvl,sW/2-(textWidth("Levels")/2),50);  
  }
- if(name.equals("winP.pg")){
+ if(name.equals("endP.pg")){
+   String endPText = "";
+   if(won){
+     endPText = "Congrats!";
+   }else{
+     endPText = ".-. Wack!";
+   }
    basicCorners(lvl);
    
    defaultText(0,0,30);
-   text("Mission Accomplished",sW/2-(textWidth("Mission Accomplished")/2),50); 
+   text(endPText,sW/2-(textWidth(endPText)/2),50); 
    defaultRect(120,0);
    rect(sW/2-120,80,240,250);
    clearLvlData();

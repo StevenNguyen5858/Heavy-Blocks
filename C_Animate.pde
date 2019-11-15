@@ -16,6 +16,7 @@ boolean playerWalkCycle = true;
 int nowPlayerWalk = -50;
 int waitTimePlayerWalk = -50;
 
+boolean won = false;
 
 int[] lvlX0;
 int[] lvlY0;
@@ -28,6 +29,8 @@ int plannedIndex0 = 0;
 boolean hasControl0 = false;
 int winX0;
 int winY0;
+int mainBlockSpeed0;
+int[] blockSpeed0;
 void setupAnimate(){
  
 }
@@ -42,7 +45,7 @@ void animateFallingBlocks(){
     }
     if(customCycle && waitedOnce==true){
       nowCustom = millis();
-      waitTimeCustom = 50;
+      waitTimeCustom = blockSpeed0[plannedIndex0];
       customCycle = false;
     }
     screenLayout(play2);
@@ -74,8 +77,10 @@ void animateFallingBlocks(){
     System.out.println(winX0 + "Winx");
     System.out.println(winY0 + "Winy");*/
     if(player1.getX()==winX0 && player1.getY()==winY0){
-      activatePage(winP);
+      activatePage(endP);
     }
+    checkCrushed();
+    checkWin();
 }
 
 void animatePlayerClimbing(){
@@ -263,6 +268,15 @@ void checkCrushed(){
 }
 void crushed(){
   text("OoOoFf",sW/2-(textWidth("OoOoFf")/2),400);
+  //won = false;
+  //activatePage(endP);
+}
+
+void checkWin(){
+  if(player1.getX() == winX0 && player1.getY() == winY0){
+    won = true;
+    activatePage(endP);
+  }
 }
 //----------@----------@----------@----------@----------@----------@----------  
 //----------@----------@----------@----------@----------@----------@----------  

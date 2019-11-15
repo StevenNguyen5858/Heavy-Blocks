@@ -76,7 +76,9 @@ void basicCorners(int exitHeightFromGround){
 //ToggleSelect/button control:
 void toggleSelect(button b){
   if(hitCheck(b) && !b.isSelected()){
+    if(b != playNextWB || b == playNextWB && won){
       selectOn(b);
+    }
   }else{
     selectOff(b);
   }

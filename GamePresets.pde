@@ -21,7 +21,7 @@ ArrayList<int[]> plannedTraceStartY = new ArrayList<int[]>();
 ArrayList<boolean[]> gameBlockIsActive = new ArrayList<boolean[]>();
 ArrayList<Boolean> hasControl = new ArrayList<Boolean>();
 
-int[] plannedIndex = {0,0,0,0,0,0};
+int mainBlockSpeed = 1000;
 //----------@----------@----------@----------@----------@----------@----------  
 void setupPresets(){
 

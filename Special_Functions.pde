@@ -33,7 +33,7 @@ void buttonFunctions(button b){
     waitedOnce = false;
     setupCustomAnimate = true;
   }
-  if(name.equals("NextWB")){
+  if(name.equals("NextWB") && won == true){
     lvl = lvlLock+1;
     activatePage(play1);
     setgBIA();
@@ -123,6 +123,10 @@ void drawButton(button b){
     vertex(playNextWB.getX()+playNextWB.getW()-7,playNextWB.getY()+playNextWB.getH()/2);
     vertex(playNextWB.getX()+9,playNextWB.getY()+5);
     endShape();
+      if(won == false){
+      fill(0,120);
+      rect(b.getX(),b.getY(),b.getW(),b.getH());
+    }
   }
   if(name.equals("RestartWB")){
     image(restart,b.getX(),b.getY()+2);

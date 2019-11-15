@@ -164,8 +164,8 @@ void developerCommands(){
     if(developerCommand.equals("/activatepagemain")){
       activatePage(main);
     }
-    if(developerCommand.equals("/activatepagewinp")){
-      activatePage(winP);
+    if(developerCommand.equals("/activatepageendp")){
+      activatePage(endP);
     }
     if(developerCommand.equals("/activatepageplay2")){
       activatePage(play2);
