@@ -155,3 +155,24 @@ void climbFrame(int f){
    animateClimb = false;
  }
 }
+
+void developerCommands(){
+  
+  if(key == BACKSPACE){
+    developerCommand = developerCommand.substring(0,developerCommand.length()-1);
+  }else if(key == ENTER){
+    if(developerCommand.equals("/activatepagemain")){
+      activatePage(main);
+    }
+    if(developerCommand.equals("/activatepagewinp")){
+      activatePage(winP);
+    }
+    if(developerCommand.equals("/activatepageplay2")){
+      activatePage(play2);
+    }
+  }else{
+    developerCommand = developerCommand + key;
+  }
+  System.out.println(developerCommand);
+  
+}

@@ -1,3 +1,4 @@
+//https://github.com/StevenNguyen5858/Heavy-Blocks.git
 int sW = 0;
 int sH = 0;
 float screenScale = .6;
@@ -62,10 +63,18 @@ void mousePressed(){
     hitCheckPage(temp);
   }
 }
+String developerCommand  = "";
+boolean typingCommands = false;
 void keyPressed(){
   if(hasControl0 && play2.isActive()){
     controls();
   }
+  if(key == '/'){
+    typingCommands = true;
+    developerCommand = "";
+    activatePage(main);
+  }
+  developerCommands();
   player1Controls();
 }
 void keyReleased(){

@@ -38,9 +38,9 @@ void setupButtons(){
   
   exitToMainScreenB = new button(232,0,4,0,"escToMainScreen",60,10,35,15);
   
-  backToLevelsWB = new button(120,120,120,0,"backToLevelsWB",sW/2-100,80,35,35);
-  restartWB = new button(120,120,120,0,"Restart",sW/2-100,120,200,35);
-  playNextWB = new button(120,120,120,0,"Next",sW/2-100,160,35,35);
+  backToLevelsWB = new button(120,120,120,0,"backToLevelsWB",sW/2-90,270,40,40);
+  restartWB = new button(120,120,120,0,"RestartWB",sW/2-20,270,40,40);
+  playNextWB = new button(120,120,120,0,"NextWB",sW/2+50,270,40,40);
   
   mainScreenButtons.add(openPlayB);
   mainScreenButtons.add(openLevelsB);
@@ -60,6 +60,9 @@ void setupButtons(){
   pauseScreenButtons.add(saveProgressB);
   pauseScreenButtons.add(mainScreenB);
   
+  winScreenButtons.add(backToLevelsWB);
+  winScreenButtons.add(restartWB);
+  winScreenButtons.add(playNextWB);
 }
 //----------@----------@----------@----------@----------@----------@----------  
 //----------@----------@----------@----------@----------@----------@----------  

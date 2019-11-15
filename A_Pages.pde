@@ -17,6 +17,7 @@ void setupPages(){
   pages.add(play1);
   pages.add(play2);
   pages.add(pause);
+  pages.add(winP);
 }
 public class page{
   private ArrayList<button> pageButtons = new ArrayList<button>();

@@ -38,7 +38,6 @@ void animateFallingBlocks(){
       block.setY(lvlY0[plannedIndex0]);  
       player1.setX(startX0);
       player1.setY(startY0); 
-      System.out.println(player1.getY() + "---");
       block.setShape(shapes.get(shapes0[plannedIndex0]));
     }
     if(customCycle && waitedOnce==true){
@@ -69,10 +68,11 @@ void animateFallingBlocks(){
     //drawBinaryBlocks();
     drawBinaryBlocksPB();
     drawPageButtons(play2);
+    /*
     System.out.println(player1.getX() + "x");
     System.out.println(player1.getY() + "y");
     System.out.println(winX0 + "Winx");
-    System.out.println(winY0 + "Winy");
+    System.out.println(winY0 + "Winy");*/
     if(player1.getX()==winX0 && player1.getY()==winY0){
       activatePage(winP);
     }

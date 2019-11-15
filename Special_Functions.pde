@@ -2,15 +2,17 @@ boolean waitedOnce = false;
 boolean pressedContinue = false;
 boolean pressedSave = false;
 boolean setupCustomAnimate = false;
+int lvlLock = 0;
 //----------@----------@----------@----------@----------@----------@----------  
 //----------@----------@----------@----------@----------@----------@----------  
 void buttonFunctions(button b){
   String name = b.getName();
   
-  if(name.equals("Levels")){
+  if(name.equals("Levels") || name.equals("backToLevelsWB")){
     activatePage(levelsP); 
   }
   if(name.equals("Play")){
+    lvlLock = lvl;
     activatePage(play1); 
     setgBIA();
     setupLevel();
@@ -20,6 +22,7 @@ void buttonFunctions(button b){
   }
   if(name.equals("tempLevels")){
     lvl = b.getButtonTag();
+    lvlLock = lvl;
     activatePage(play1);
     setgBIA();
     setupLevel();
@@ -29,6 +32,12 @@ void buttonFunctions(button b){
     customCycle = true;
     waitedOnce = false;
     setupCustomAnimate = true;
+  }
+  if(name.equals("NextWB")){
+    lvl = lvlLock+1;
+    activatePage(play1);
+    setgBIA();
+    setupLevel();
   }
   if(name.equals("Pause")){
     activatePage(pause);
@@ -40,11 +49,7 @@ void buttonFunctions(button b){
     pressedContinue = true;
   }
   if(name.equals("Restart")){
-    plannedIndex[lvl-1] = 0;
-    waitedOnce = false;
-    pressedContinue = false;
-    pressedSave = false;
-    resetBinaryBlocks();
+    clearLvlData();
     activatePage(play2);  
   }
   if(name.equals("Save & Exit")){
@@ -52,26 +57,11 @@ void buttonFunctions(button b){
     activatePage(main); 
   }
   if(name.equals("MainScreen")){
-    plannedIndex[lvl-1] = 0;
-    waitedOnce = false;
-    pressedContinue = false;
-    pressedSave = false;
-    resetBinaryBlocks();
+    clearLvlData();
     activatePage(main);  
   }
   
 }
-void activatePage(page p){
-  //deactivates other pages:
-  for(int i = 0; i<pages.size(); i++){
-    if(pages.get(i) != p){
-      pages.get(i).setIsActive(false);  
-    }
-  }
-  //Activates page:
-  p.setWillDrawScreen(true);
-}
-
 
 
 void revertButtonFunctions(button b){
@@ -112,6 +102,24 @@ void drawButton(button b){
     defaultText(255,255,fitTextHeight(b.getH()));
     text(b.getName(),b.getX()+b.getW()/2-(textWidth(b.getName()))/2,b.getY()+(b.getH()*.83) ); 
   }
+  if(name.equals("backToLevelsWB")){
+    defaultRect(255,b.getStroke());
+    rect(b.getX()+4,b.getY()+5,7,b.getH()/5);
+    rect(b.getX()+4,b.getY()+b.getH()/4+6,7,b.getH()/5);
+    rect(b.getX()+4,b.getY()+b.getH()/2+7,7,b.getH()/5);
+    rect(b.getX()+15,b.getY()+5,b.getW()-19,b.getH()/5);
+    rect(b.getX()+15,b.getY()+b.getH()/4+6,b.getW()-19,b.getH()/5);
+    rect(b.getX()+15,b.getY()+b.getH()/2+7,b.getW()-19,b.getH()/5);
+  }
+  if(name.equals("NextWB")){
+    defaultRect(#07DE13,b.getStroke());
+    beginShape();
+    vertex(playNextWB.getX()+9,playNextWB.getY()+5);
+    vertex(playNextWB.getX()+9,playNextWB.getY()+playNextWB.getH()-7);
+    vertex(playNextWB.getX()+playNextWB.getW()-7,playNextWB.getY()+playNextWB.getH()/2);
+    vertex(playNextWB.getX()+9,playNextWB.getY()+5);
+    endShape();
+  }
 }
  
  
@@ -128,4 +136,12 @@ void setgBIA(){
   for(int i = 0; i<gameBlocks.size(); i++){
     gameBlocks.get(i).setIsActive(gameBlockIsActive.get(lvl-1)[i]);
   }
+}
+
+void clearLvlData(){
+  plannedIndex0 = 0;
+  waitedOnce = false;
+  pressedContinue = false;
+  pressedSave = false;
+  resetBinaryBlocks();
 }

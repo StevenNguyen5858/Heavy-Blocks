@@ -1,3 +1,15 @@
+void activatePage(page p){
+  typingCommands = false;
+  //deactivates other pages:
+  for(int i = 0; i<pages.size(); i++){
+    if(pages.get(i) != p){
+      pages.get(i).setIsActive(false);  
+    }
+  }
+  //Activates page:
+  p.setWillDrawScreen(true);
+}
+
 void drawFrame(page p){
   screenLayout(p);
   drawPageButtons(p);
@@ -50,7 +62,10 @@ void screenLayout(page p){
    basicCorners(lvl);
    
    defaultText(0,0,30);
-   text("TaskAccomplished " + lvl,sW/2-(textWidth("TaskAccomplished")/2),50); 
+   text("Mission Accomplished",sW/2-(textWidth("Mission Accomplished")/2),50); 
+   defaultRect(120,0);
+   rect(sW/2-120,80,240,250);
+   clearLvlData();
  }
 }
 void drawPageButtons(page p){
