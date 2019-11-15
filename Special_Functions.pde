@@ -52,6 +52,10 @@ void buttonFunctions(button b){
     clearLvlData();
     activatePage(play2);  
   }
+  if(name.equals("RestartWB")){
+    clearLvlData();
+    activatePage(play2);
+  }
   if(name.equals("Save & Exit")){
     pressedSave = true;
     activatePage(main); 
@@ -119,6 +123,11 @@ void drawButton(button b){
     vertex(playNextWB.getX()+playNextWB.getW()-7,playNextWB.getY()+playNextWB.getH()/2);
     vertex(playNextWB.getX()+9,playNextWB.getY()+5);
     endShape();
+  }
+  if(name.equals("RestartWB")){
+    image(restart,b.getX(),b.getY()+2);
+    defaultRect(-1,0);
+    rect(b.getX(),b.getY(),b.getW(),b.getH());
   }
 }
  

@@ -17,6 +17,7 @@ void setup(){
  setupPages();
  setupAnimate();
  setupLevels();
+ setupImages();
 }
 void draw(){
   //draw page if willDrawScreen:
@@ -69,13 +70,18 @@ void keyPressed(){
   if(hasControl0 && play2.isActive()){
     controls();
   }
+  player1Controls();
+  
   if(key == '/'){
-    typingCommands = true;
+    
     developerCommand = "";
+    typingCommands = true;
     activatePage(main);
   }
-  developerCommands();
-  player1Controls();
+  if(typingCommands){
+    developerCommands();
+  }
+  
 }
 void keyReleased(){
   player1ControlsR();

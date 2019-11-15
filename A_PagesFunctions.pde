@@ -1,5 +1,7 @@
 void activatePage(page p){
-  typingCommands = false;
+  if(p != main){
+    typingCommands = false;  
+  }
   //deactivates other pages:
   for(int i = 0; i<pages.size(); i++){
     if(pages.get(i) != p){
