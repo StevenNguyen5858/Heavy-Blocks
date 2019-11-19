@@ -57,8 +57,9 @@ int fitTextHeight(float fitHeight){
 //----------@----------@----------@----------@----------@----------@----------  
 //----------@----------@----------@----------@----------@----------@----------  
 //Draw Basic background to our screens
-void basicCorners(int exitHeightFromGround){
-  int space = exitHeightFromGround*50+51;
+void basicCorners(int h){
+  h = h + startH[lvl-1];
+  int space = h*50+51;
   defaultRect(150,0);
   rect(0,0,sW-1,sH-1);
   defaultRect(120,0);
@@ -76,7 +77,7 @@ void basicCorners(int exitHeightFromGround){
 //ToggleSelect/button control:
 void toggleSelect(button b){
   if(hitCheck(b) && !b.isSelected()){
-    if(b != playNextWB || b == playNextWB && won){
+    if(b != playNextWB || b == playNextWB && won>0){
       selectOn(b);
     }
   }else{

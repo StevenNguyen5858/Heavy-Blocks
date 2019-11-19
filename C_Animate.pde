@@ -16,10 +16,10 @@ boolean playerWalkCycle = true;
 int nowPlayerWalk = -50;
 int waitTimePlayerWalk = -50;
 
-boolean won = false;
+int won = 0;
 
 int[] lvlX0;
-int[] lvlY0;
+int lvlY0;
 int[] shapes0;
 
 int startX0;
@@ -31,6 +31,8 @@ int winX0;
 int winY0;
 int mainBlockSpeed0;
 int[] blockSpeed0;
+
+int[] star0;
 void setupAnimate(){
  
 }
@@ -38,7 +40,7 @@ void setupAnimate(){
 void animateFallingBlocks(){
     if(waitedOnce == false && pressedContinue == false && pressedSave == false){
       block.setX(lvlX0[plannedIndex0]);
-      block.setY(lvlY0[plannedIndex0]);  
+      block.setY(lvlY0);  
       player1.setX(startX0);
       player1.setY(startY0); 
       block.setShape(shapes.get(shapes0[plannedIndex0]));
@@ -71,11 +73,11 @@ void animateFallingBlocks(){
     //drawBinaryBlocks();
     drawBinaryBlocksPB();
     drawPageButtons(play2);
-    /*
+    
     System.out.println(player1.getX() + "x");
     System.out.println(player1.getY() + "y");
     System.out.println(winX0 + "Winx");
-    System.out.println(winY0 + "Winy");*/
+    System.out.println(winY0 + "Winy");
     if(player1.getX()==winX0 && player1.getY()==winY0){
       activatePage(endP);
     }
@@ -162,7 +164,7 @@ void prepDropBlocks(){
       PBEquals();
       // set new block data to presets
       block.setX(lvlX0[plannedIndex0]);
-      block.setY(lvlY0[plannedIndex0]);
+      block.setY(lvlY0);
       block.setShape(shapes.get(shapes0[plannedIndex0]));
     }
   }
@@ -194,12 +196,12 @@ void playerBounds(){
     binaryBlocksPB[x][gridR-1] = true;
   }
   for(int y = 0; y<gridR; y++){
-    if(y<=(gridR-(lvl*2+3)-8) || y>=gridR-(lvl*2+3)){
+    if(y<=(gridR-((lvl+startH[lvl-1])*2+3)-8) || y>=gridR-((lvl+startH[lvl-1])*2+3)){
       binaryBlocksPB[0][y] = true;
     }
   }
   for(int y = 0; y<gridR; y++){
-    if(y<=(gridR-(lvl*2+3)-8) || y>=gridR-(lvl*2+3)){
+    if(y<=(gridR-((lvl+startH[lvl-1])*2+3)-8) || y>=gridR-((lvl+startH[lvl-1])*2+3)){
       binaryBlocksPB[gridC-1][y] = true;
     }
   }  
@@ -224,7 +226,7 @@ void drawBinaryBlocksPB(){
     for(int x = 0; x<gridC; x++){
       if(binaryBlocksPB[x][y] == true){
         defaultRect(255,255);
-        shape tempShape = new shape(shapes.get(4),x,y,true);
+        shape tempShape = new shape(shapes.get(5),x,y,true);
         drawShape(tempShape);
       }
     }
@@ -257,26 +259,35 @@ boolean blockCanMove(int newX, int newY, int[][] s, boolean isPlayer){
   return true;
 }
 //----------@----------@----------@----------@----------@----------@---------- 
-void checkCrushed(){
- if(blockCanMove(player1.getX(),player1.getY(),player1.getShape(),true) == false &&
- blockCanMove(player1.getX(),player1.getY()+1,player1.getShape(),true) == false){
-   crushed();
- }else if(blockCanMove(player1.getX(),player1.getY(),player1.getShape(),true) == false && 
+void checkCrushed(){ 
+ if(blockCanMove(player1.getX(),player1.getY(),player1.getShape(),true) == false && 
  blockCanMove(player1.getX(),player1.getY()+1,player1.getShape(),true) == true){
    player1.setY(player1.getY()+1);
- } 
+ }else if(blockCanMove(player1.getX(),player1.getY(),player1.getShape(),true) == false &&
+ blockCanMove(player1.getX(),player1.getY()+1,player1.getShape(),true) == false){
+   crushed();
+ }
 }
 void crushed(){
   text("OoOoFf",sW/2-(textWidth("OoOoFf")/2),400);
-  //won = false;
-  //activatePage(endP);
+  won = 0;
+  activatePage(endP);
 }
 
 void checkWin(){
   if(player1.getX() == winX0 && player1.getY() == winY0){
-    won = true;
+    won = checkStars();
     activatePage(endP);
   }
+}
+
+int checkStars(){
+  for(int i = 0; i<3; i++){
+    if(plannedIndex0 <= star0[i]){
+      return 3-i;
+    }
+  }
+  return 0;
 }
 //----------@----------@----------@----------@----------@----------@----------  
 //----------@----------@----------@----------@----------@----------@----------  

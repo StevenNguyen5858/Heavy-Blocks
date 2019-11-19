@@ -1,4 +1,6 @@
-
+int[] levelStars = {0,0,0,
+                    0,0,0,
+                    0,0,0};
 void activatePage(page p){
   if(p != main){
     typingCommands = false;  
@@ -63,10 +65,10 @@ void screenLayout(page p){
  }
  if(name.equals("endP.pg")){
    String endPText = "";
-   if(won){
+   if(won>0){
      endPText = "Congrats!";
    }else{
-     endPText = ".-. Wack!";
+     endPText = ".-. Wack! Try 'gain";
    }
    basicCorners(lvl);
    
@@ -74,7 +76,10 @@ void screenLayout(page p){
    text(endPText,sW/2-(textWidth(endPText)/2),50); 
    defaultRect(120,0);
    rect(sW/2-120,80,240,250);
+   drawStars(won);
+   
    clearLvlData();
+   
  }
 }
 void drawPageButtons(page p){
@@ -110,5 +115,19 @@ void hitCheckPage(page p){
       toggleSelect(temp); 
     }
     
+  }
+}
+
+//--2 drawStars:
+void drawStars(int w){
+  levelStars[lvl-1] = won;
+  for(int i = 0; i<3; i++){
+    if(i<w){
+      defaultRect(255,234,0,0);
+    }else{
+      fill(0,120);
+      stroke(0);
+    }
+    rect(sW/2-100+(i*75),115,50,50);
   }
 }

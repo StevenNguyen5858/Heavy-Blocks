@@ -3,13 +3,14 @@ level lvl1 = new level();
 level lvl2 = new level();
 level lvl3 = new level();
 level lvl4 = new level();
+int[] startH = {1,0,0,0};
+
 void setupLevels(){
   //Format is repeated for each new level:
   //BlockStarts:
-  int[] lvl1X = {3,3,18,15,12,9,6,1,10,18};
-  int[] lvl1Y = {0,0,0,0,0,0,0,0,0,0};
-  int[] shape1 = {0,3,0,0,0,0,0,0,1,1};
-  int[] blockSpeed1 = {10,10,10,10,10,10,50,50,40,40};
+  int[] lvl1X = {17,19,19,19, 1,3,5, 17, 16, 7,9, 17, 1,3,5,7,9, 1,3,5,7,9, 11,14,14, 16,16,16, 11,17};
+  int[] shape1 = {0,0,0,0, 0,0,0, 0, 5, 0,0, 0, 0,0,0,0,0, 0,0,0,0,0, 7,0,0, 5,5,5, 8,0}; 
+  int[] blockSpeed1 = {0,5,5,170, 40,35,30, 50, 50, 40,40, 120, 35,30,25,20,15, 30,30,30,30,30, 50,120,5, 5,5,5, 850,50};
   //PlayerStart:
   int startX1 = 1;
   int startY1 = gridR-3;
@@ -17,27 +18,27 @@ void setupLevels(){
   //Other:
   boolean hasControl1 = false;
   int winX1 = 21;
-  int winY1 = gridR-7;
+  int winY1 = gridR-9;
   int mainBlockSpeed1 = 250;
+  int[] star1 = {4,12,29};
   
   //BlockStarts:
-  int[] lvl2X = {18,3,12,7,9,11,7,9,10,18};
-  int[] lvl2Y = {0,0,0,0,0,0,0,0,0,0};
-  int[] shape2 = {0,1,0,0,0,1,0,0,1,1};
-  int[] blockSpeed2 = {10,10,10,90,50,50,50,50,40,40};
+  int[] lvl2X = {3,3,1,1,1,1,4,18,5,7,9,12,15,18,5,7,9,12,14,16,18,5,7,9,12,15,18,5,7,9,12,14,16,18,5,7,9,12,15,18,5,7,9,12,14,16,18};
+  int[] shape2 = {0,2,0,6,3,4,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+  int[] blockSpeed2 = {0,5,130,120,70,70,50,50,40,40,40,50,50,5,50,50,50,50,50,50,50,40,40,40,50,50,5,50,50,50,50,50,50,50,40,40,40,50,50,5,30,30,30,30,30,30,30};
   //PlayerStart:
-  int startX2 = 0;
-  int startY2 = gridR-9;
+  int startX2 = 1;
+  int startY2 = gridR-3;
   boolean[] gBIA2 = {true,false,false,false,false,false,false,false,false,false,false};
   //Other:
   boolean hasControl2 = true; 
   int winX2 = 0;
   int winY2 = 0;
   int mainBlockSpeed2 = 700;
+  int[] star2 = {0,0,0};
   
   //BlockStarts:
   int[] lvl3X = {3,6,9,3,18,15};
-  int[] lvl3Y = {2,2,2,2,2,2};
   int[] shape3 = {0,1,2,3,0,1};
   int[] blockSpeed3 = {40,50,50,150,150,50};
   //PlayerStart:
@@ -49,10 +50,10 @@ void setupLevels(){
   int winX3 = 0;
   int winY3 = 0;
   int mainBlockSpeed3 = 700;
+  int[] star3 = {0,0,0};
   
   //BlockStarts:
   int[] lvl4X = {3,6,9,3,18,15};
-  int[] lvl4Y = {2,2,2,2,2,2};
   int[] shape4 = {0,1,2,3,0,1};
   int[] blockSpeed4 = {40,50,50,150,150,50};
   //PlayerStart:
@@ -64,6 +65,7 @@ void setupLevels(){
   int winX4 = 0;
   int winY4 = 0;
   int mainBlockSpeed4 = 700;
+  int[] star4 = {0,0,0};
   
  
   gameBlockIsActive.add(gBIA1);
@@ -74,10 +76,10 @@ void setupLevels(){
   
   gameBlockIsActive.add(gBIA4);
   
-  lvl1 = new level(lvl1X, lvl1Y, shape1, startX1, startY1, hasControl1, winX1, winY1, mainBlockSpeed1, blockSpeed1);
-  lvl2 = new level(lvl2X, lvl2Y, shape2, startX2, startY2, hasControl2, winX2, winY2, mainBlockSpeed2, blockSpeed2);
-  lvl3 = new level(lvl3X, lvl3Y, shape3, startX3, startY3, hasControl3, winX3, winY3, mainBlockSpeed3, blockSpeed3);
-  lvl4 = new level(lvl4X, lvl4Y, shape4, startX4, startY4, hasControl4, winX4, winY4, mainBlockSpeed4, blockSpeed4);
+  lvl1 = new level(lvl1X, shape1, startX1, startY1, hasControl1, winX1, winY1, mainBlockSpeed1, blockSpeed1, star1);
+  lvl2 = new level(lvl2X, shape2, startX2, startY2, hasControl2, winX2, winY2, mainBlockSpeed2, blockSpeed2, star2);
+  lvl3 = new level(lvl3X, shape3, startX3, startY3, hasControl3, winX3, winY3, mainBlockSpeed3, blockSpeed3, star3);
+  lvl4 = new level(lvl4X, shape4, startX4, startY4, hasControl4, winX4, winY4, mainBlockSpeed4, blockSpeed4, star4);
 
   levels.add(lvl1);
   levels.add(lvl2);
@@ -87,7 +89,7 @@ void setupLevels(){
 }
 void setupLevel(){
   lvlX0 = levels.get(lvl-1).getLvlX();
-  lvlY0 = levels.get(lvl-1).getLvlY();
+  lvlY0 = 0;
   shapes0 = levels.get(lvl-1).getShapes();
   startX0 = levels.get(lvl-1).getStartX();
   startY0 = levels.get(lvl-1).getStartY();
@@ -97,11 +99,12 @@ void setupLevel(){
   winY0 = levels.get(lvl-1).getWinY();
   mainBlockSpeed0 = levels.get(lvl-1).getMainBlockSpeed();
   blockSpeed0 = levels.get(lvl-1).getBlockSpeed();
+  star0 = levels.get(lvl-1).getStar();
 }
+
 class level{
   //Block starts
   int[] lvlX;
-  int[] lvlY;
   int[] shapes;
   //Player starts
   int startX;
@@ -113,12 +116,12 @@ class level{
   int winY;
   int mainBlockSpeed;
   int[] blockSpeed;
+  int[] star;
   
   level(){ 
   }
-  level(int[] lvlX, int[] lvlY, int[] shapes, int startX, int startY, boolean hasControl, int winX, int winY, int mainBlockSpeed, int[] blockSpeed){
+  level(int[] lvlX, int[] shapes, int startX, int startY, boolean hasControl, int winX, int winY, int mainBlockSpeed, int[] blockSpeed, int[] star){
     this.lvlX = lvlX;
-    this.lvlY = lvlY;
     this.shapes = shapes;
     this.startX = startX;
     this.startY = startY;
@@ -127,35 +130,27 @@ class level{
     this.winY = winY;
     this.mainBlockSpeed = mainBlockSpeed;
     this.blockSpeed = blockSpeed;
+    this.star = star;
   }
   
   
   void setLvlX(int[] lvlX){
     this.lvlX = lvlX;  
   }
-  void setLvlY(int[] lvlY){
-    this.lvlY = lvlY;  
-  }
   int[] getLvlX(){
     return lvlX;
-  }
-  int[] getLvlY(){
-    return lvlY;
   }
   void setStartX(int startX){
       this.startX = startX;
   }
-  void setStartY(int startY){
-    this.startY = startY;  
-  }
   int getStartX(){
     return startX;
   }
-  int getStartY(){
-    return startY;  
-  }
   void setShapes(int[] shapes){
     this.shapes = shapes;
+  }
+  int getStartY(){
+    return startY;  
   }
   int[] getShapes(){
     return this.shapes;
@@ -189,5 +184,8 @@ class level{
   }
   int[] getBlockSpeed(){
     return blockSpeed;  
+  }
+  int[] getStar(){
+    return star;
   }
 }

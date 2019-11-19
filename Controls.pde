@@ -1,6 +1,7 @@
 boolean climbK = false;
 boolean rightK = false;
 boolean leftK = false;
+boolean jumpK = false;
 char left = 'a';
 char right = 'd';
 char jump = ' ';
@@ -27,8 +28,21 @@ void controls(){
 }
 
 void player1Controls(){
+  if(key==climb){
+    //A key combo of 'climb' + 'a' or 'd' needs to be used to climb left or right:
+    climbK = true;
+  }
+  if(key==left){
+    leftK = true;
+  }
+  if(key==right){
+    rightK = true;  
+  }
+  if(key==jump){
+    jumpK = true;  
+  }
   //climb up2 right1:
-  if(climbK && key == right || key == climb && rightK){
+  if(climbK && rightK){
     if(canClimbRight() != 4){
       animateClimb = true;
       climbRight = true;
@@ -36,7 +50,7 @@ void player1Controls(){
     }
   }
   //climb up2 left1:
-  else if(climbK && key == left || key == climb && leftK){
+  else if(climbK && leftK){
     if(canClimbLeft() != 4){
       animateClimb = true;
       climbRight = false;
@@ -57,16 +71,6 @@ void player1Controls(){
       player1.setY(player1.getY()-1);
     }
   }
-  if(key==climb){
-    //A key combo of 'climb' + 'a' or 'd' needs to be used to climb left or right:
-    climbK = true;
-  }
-  if(key==left){
-    leftK = true;
-  }
-  if(key==right){
-    rightK = true;  
-  }
 }
 void player1ControlsR(){
   if(key == climb){
@@ -77,6 +81,9 @@ void player1ControlsR(){
   }
   if(key == right){
     rightK = false;  
+  }
+  if(key == jump){
+    jumpK = false;  
   }
 }
 
@@ -105,7 +112,6 @@ void movePlayerHorizontal(){
   if(playerFrameWalk == 3){
     playerColor = #FF8E03;
   }
-  System.out.println(playerFrameWalk);
  
 }
 
@@ -114,10 +120,17 @@ void movePlayerHorizontal(){
 
 
 int canClimbRight(){
+  if(jumpK && blockCanMove(player1.getX()+1,player1.getY()-3,player1.getShape(),true) && 
+  blockCanMove(player1.getX(),player1.getY()-3,player1.getShape(),true) &&
+  blockCanMove(player1.getX(),player1.getY()-2,player1.getShape(),true) &&
+  blockCanMove(player1.getX(),player1.getY()-1,player1.getShape(),true) &&
+  blockCanMove(player1.getX(),player1.getY()+1,player1.getShape(),true) == false){
+    return 0;
+  }
   if(blockCanMove(player1.getX(),player1.getY()-2,player1.getShape(),true) && 
   blockCanMove(player1.getX()+1,player1.getY()-2,player1.getShape(),true) &&
   blockCanMove(player1.getX()+1,player1.getY()-1,player1.getShape(),true) == false){
-     return 1;
+    return 1;
   }
   if(blockCanMove(player1.getX(),player1.getY()-1,player1.getShape(),true) && 
   blockCanMove(player1.getX()+1,player1.getY()-1,player1.getShape(),true) &&
@@ -127,10 +140,17 @@ int canClimbRight(){
   return 4;
 }
 int canClimbLeft(){
+  if(jumpK && blockCanMove(player1.getX()-1,player1.getY()-3,player1.getShape(),true) && 
+    blockCanMove(player1.getX(),player1.getY()-3,player1.getShape(),true) &&
+    blockCanMove(player1.getX(),player1.getY()-2,player1.getShape(),true) &&
+    blockCanMove(player1.getX(),player1.getY()-1,player1.getShape(),true) &&
+    blockCanMove(player1.getX(),player1.getY()+1,player1.getShape(),true) == false){
+    return 0;
+  }
   if(blockCanMove(player1.getX(),player1.getY()-2,player1.getShape(),true) && 
   blockCanMove(player1.getX()-1,player1.getY()-2,player1.getShape(),true) && 
-  blockCanMove(player1.getX()-1,player1.getY()-1,player1.getShape(),true) == false){
-     return 1;
+  blockCanMove(player1.getX()-1,player1.getY()-1,player1.getShape(),true) == false){ 
+    return 1;
   }
     if(blockCanMove(player1.getX(),player1.getY()-1,player1.getShape(),true) && 
   blockCanMove(player1.getX()-1,player1.getY()-1,player1.getShape(),true) &&
@@ -140,6 +160,9 @@ int canClimbLeft(){
   return 4;  
 }
 void climbFrame(int f){
+ if(f == 0){
+   player1.setY(player1.getY()-1);
+ }
  if(f == 1){
    player1.setY(player1.getY()-1);
  }

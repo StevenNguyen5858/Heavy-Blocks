@@ -12,6 +12,10 @@ boolean drawNewBlock = false;
   {{0,1,0},
    {1,1,1},
    {0,0,0}};
+  int[][] BT = 
+  {{1,1,1},
+   {0,1,0},
+   {0,0,0}};
   int[][] BL =
   {{0,1,0},
    {0,1,0},
@@ -23,6 +27,18 @@ boolean drawNewBlock = false;
 int[][] P = 
   {{1,0,0},
    {1,0,0},
+   {0,0,0}};
+int[][] SL = 
+  {{1,1,1},
+   {1,0,0},
+   {0,0,0}};
+int[][] USL =
+  {{1,0,0},
+   {1,1,1},
+   {0,0,0}};
+int[][] BUL = 
+  {{1,1,1},
+   {0,0,1},
    {0,0,0}};
 ArrayList<shape> gameBlocks = new ArrayList<shape>();
 shape block = new shape();
@@ -40,9 +56,13 @@ shape player1 = new shape();
 void setupShapes(){
   shapes.add(square);  
   shapes.add(L);
-  shapes.add(T);
   shapes.add(BL);
+  shapes.add(T);
+  shapes.add(BT);
   shapes.add(O);
+  shapes.add(SL);
+  shapes.add(USL);
+  shapes.add(BUL);
   
   gameBlocks.add(block);
   gameBlocks.add(trace1);

@@ -33,7 +33,7 @@ void buttonFunctions(button b){
     waitedOnce = false;
     setupCustomAnimate = true;
   }
-  if(name.equals("NextWB") && won == true){
+  if(name.equals("NextWB") && won>0){
     lvl = lvlLock+1;
     activatePage(play1);
     setgBIA();
@@ -86,7 +86,7 @@ void drawButton(button b){
   if(name.equals("tempLevels")){
     defaultText(0,0,25);
     text("lvl." + b.getButtonTag(),b.getX()+b.getW()/2-(textWidth("lvl"+b.getButtonTag()))/2,b.getY()+(b.getH()*.50) ); 
-    for(int i = 1; i<4; i++){
+    for(int i = 1; i<=levelStars[b.getButtonTag()-1]; i++){
       defaultRect(255,234,0,0);
       rect(b.getX()-5+20*i,b.getY()+(b.getH()*.70), 10,10);
     }
@@ -123,7 +123,7 @@ void drawButton(button b){
     vertex(playNextWB.getX()+playNextWB.getW()-7,playNextWB.getY()+playNextWB.getH()/2);
     vertex(playNextWB.getX()+9,playNextWB.getY()+5);
     endShape();
-      if(won == false){
+      if(won == 0){
       fill(0,120);
       rect(b.getX(),b.getY(),b.getW(),b.getH());
     }
