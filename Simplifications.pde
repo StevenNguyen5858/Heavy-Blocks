@@ -63,6 +63,7 @@ void basicCorners(int h){
   defaultRect(150,0);
   rect(0,0,sW-1,sH-1);
   defaultRect(120,0);
+  
   //topLeft
   rect(-1,0,49,sH-space-176);
   //bottumLeft

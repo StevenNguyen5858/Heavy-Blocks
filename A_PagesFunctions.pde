@@ -52,6 +52,11 @@ void screenLayout(page p){
  if(name.equals("play2.pg")){
    basicCorners(lvl);
    
+   if(introPushed){
+     defaultRect(120,0);
+     rect(-1,0,49,sH);  
+   }
+   
    defaultText(0,0,30);
    text("Level " + lvl,sW/2-(textWidth("Levels")/2),50);  
  }

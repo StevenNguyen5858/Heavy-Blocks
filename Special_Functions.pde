@@ -62,7 +62,7 @@ void buttonFunctions(button b){
   }
   if(name.equals("MainScreen")){
     clearLvlData();
-    activatePage(main);  
+    activatePage(main); 
   }
   
 }
@@ -90,6 +90,12 @@ void drawButton(button b){
       defaultRect(255,234,0,0);
       rect(b.getX()-5+20*i,b.getY()+(b.getH()*.70), 10,10);
     }
+  }
+  if(name.equals("openLevelsEditor")){
+    //--2;
+    defaultText(255,255,15);
+    System.out.println("ope");
+    text("Edit Levels",b.getX()+b.getW()/2-(textWidth("Edit Levels"))/2,b.getY()+(b.getH()*.75) );
   }
   if(name.equals("PlayB")){
     defaultText(0,225,31,-1,40);
@@ -157,4 +163,5 @@ void clearLvlData(){
   pressedContinue = false;
   pressedSave = false;
   resetBinaryBlocks();
+  introPushed = false;
 }

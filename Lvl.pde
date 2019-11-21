@@ -5,6 +5,7 @@ level lvl3 = new level();
 level lvl4 = new level();
 int[] startH = {1,0,0,0};
 
+
 void setupLevels(){
   //Format is repeated for each new level:
   //BlockStarts:
@@ -12,13 +13,13 @@ void setupLevels(){
   int[] shape1 = {0,0,0,0, 0,0,0, 0, 5, 0,0, 0, 0,0,0,0,0, 0,0,0,0,0, 7,0,0, 5,5,5, 8,0}; 
   int[] blockSpeed1 = {0,5,5,170, 40,35,30, 50, 50, 40,40, 120, 35,30,25,20,15, 30,30,30,30,30, 50,120,5, 5,5,5, 850,50};
   //PlayerStart:
-  int startX1 = 1;
-  int startY1 = gridR-3;
+  int startX1 = 0;
+  int startY1 = gridR-((lvl+startH[lvl-1])*2+5);
   boolean[] gBIA1 = {false,false,false,false,false,false,false,false,false,false,false};
   //Other:
   boolean hasControl1 = false;
   int winX1 = 21;
-  int winY1 = gridR-9;
+  int winY1 = gridR-((lvl+startH[lvl-1])*2+5);
   int mainBlockSpeed1 = 250;
   int[] star1 = {4,12,29};
   
@@ -112,6 +113,7 @@ class level{
   int plannedIndex = 0;
   //other
   boolean hasControl = true;
+  int exitX;
   int winX;
   int winY;
   int mainBlockSpeed;

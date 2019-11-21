@@ -15,6 +15,11 @@ int waitTimePlayerGravity = -500;
 boolean playerWalkCycle = true;
 int nowPlayerWalk = -50;
 int waitTimePlayerWalk = -50;
+//Intro push:
+boolean introPushCycle = true;
+int nowintroPush = -100;
+int waitTimeintroPush = -100;
+boolean introPushed = false;
 
 int won = 0;
 
@@ -33,6 +38,7 @@ int mainBlockSpeed0;
 int[] blockSpeed0;
 
 int[] star0;
+
 void setupAnimate(){
  
 }
@@ -196,7 +202,10 @@ void playerBounds(){
     binaryBlocksPB[x][gridR-1] = true;
   }
   for(int y = 0; y<gridR; y++){
-    if(y<=(gridR-((lvl+startH[lvl-1])*2+3)-8) || y>=gridR-((lvl+startH[lvl-1])*2+3)){
+    if(introPushed && y<gridR){
+      binaryBlocksPB[0][y] = true;
+    }
+    else if(y<=(gridR-((lvl+startH[lvl-1])*2+3)-8) || y>=gridR-((lvl+startH[lvl-1])*2+3)){
       binaryBlocksPB[0][y] = true;
     }
   }
@@ -275,6 +284,7 @@ void crushed(){
 }
 
 void checkWin(){
+  //if here then end/exitscreen:
   if(player1.getX() == winX0 && player1.getY() == winY0){
     won = checkStars();
     activatePage(endP);
@@ -288,6 +298,24 @@ int checkStars(){
     }
   }
   return 0;
+}
+/*if(introPushed == false && millis() > nowCustom + ){
+      introPush();
+      System.out.println("meep");
+    }*/
+void introPush(){
+  if(introPushCycle){
+    nowintroPush = millis();
+    waitTimeintroPush = 1000;
+    introPushCycle = false;
+  }
+  if(millis() > nowintroPush + waitTimeintroPush){
+    defaultRect(120,0);
+    rect(-1,0,49,sH);
+    player1.setX(player1.getX()+1);
+    introPushed = true;
+    introPushCycle = true;
+  }  
 }
 //----------@----------@----------@----------@----------@----------@----------  
 //----------@----------@----------@----------@----------@----------@----------  

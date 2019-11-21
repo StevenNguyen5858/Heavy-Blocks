@@ -31,6 +31,9 @@ void draw(){
   if(play2.isActive()){
     animateFallingBlocks();
     
+    if(introPushed == false){
+      introPush();
+    }
     //Player movement
     if(animateClimb){
       animatePlayerClimbing();

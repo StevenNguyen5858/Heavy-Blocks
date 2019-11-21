@@ -5,6 +5,7 @@ page play1 = new page();
 page play2 = new page();
 page pause = new page();
 page endP = new page();
+page levelsEditorP = new page();
 void setupPages(){
   main = new page(mainScreenButtons,true,false,"main");
   levelsP = new page(levelsScreenButtons,false,false,"levels");
@@ -12,12 +13,14 @@ void setupPages(){
   play2 = new page(play2ScreenButtons,false,false,"play2");
   pause = new page(pauseScreenButtons,false,false,"pause"); 
   endP = new page(winScreenButtons,false,false,"endP");
+  levelsEditorP = new page(levelsEditorScreenButtons,false,false,"levelsEditor");
   pages.add(main);
   pages.add(levelsP);
   pages.add(play1);
   pages.add(play2);
   pages.add(pause);
   pages.add(endP);
+  pages.add(levelsEditorP);
 }
 public class page{
   private ArrayList<button> pageButtons = new ArrayList<button>();

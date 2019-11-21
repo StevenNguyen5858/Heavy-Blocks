@@ -5,6 +5,7 @@ ArrayList<button> play1ScreenButtons = new ArrayList<button>();
 ArrayList<button> play2ScreenButtons = new ArrayList<button>();
 ArrayList<button> pauseScreenButtons = new ArrayList<button>();
 ArrayList<button> winScreenButtons = new ArrayList<button>();
+ArrayList<button> levelsEditorScreenButtons = new ArrayList<button>();
 button openPlayB = new button();
 button openLevelsB = new button();
   button tempB = new button();
@@ -17,7 +18,9 @@ button continueB = new button();
 button restartB = new button();
 button saveProgressB = new button();
 button mainScreenB = new button();
+
 button exitToMainScreenB = new button();
+button openLevelsEditorB = new button();
 
 button backToLevelsWB = new button();
 button restartWB = new button();
@@ -36,7 +39,8 @@ void setupButtons(){
   saveProgressB = new button(120,120,120,0,"Save & Exit",sW/2-100,160,200,35);
   mainScreenB = new button(120,120,120,0,"MainScreen",sW/2-100,200,200,35);
   
-  exitToMainScreenB = new button(232,0,4,0,"escToMainScreen",60,10,35,15);
+  exitToMainScreenB = new button(232,0,4,0,"escToMainScreen",60,10,35,20);
+  openLevelsEditorB = new button(180,180,180,0,"openLevelsEditor",sW-145,10,85,23);
   
   backToLevelsWB = new button(120,120,120,0,"backToLevelsWB",sW/2-90,270,40,40);
   restartWB = new button(120,120,120,0,"RestartWB",sW/2-20,270,40,40);
@@ -48,6 +52,7 @@ void setupButtons(){
   mainScreenButtons.add(openSettingsB);
   
   levelsScreenButtons.add(exitToMainScreenB);
+  levelsScreenButtons.add(openLevelsEditorB);
 //levelsScreenButtons.add(tempForLoopButtons);
   
   play1ScreenButtons.add(exitToMainScreenB);
