@@ -29,21 +29,24 @@ void draw(){
   }
   //play screen animations:
   if(play2.isActive()){
-    animateFallingBlocks();
-    
     if(introPushed == false){
       introPush();
-    }
-    //Player movement
-    if(animateClimb){
-      animatePlayerClimbing();
-    }
-    if(animateClimb==false && animateJump == false){
       playerGravity();
     }
-    /*if(animateLeft){
-      playerWalkLeft();
-    }*/
+    
+    if(startLevel){
+      animateFallingBlocks();
+      //Player movement
+      if(animateClimb){
+        animatePlayerClimbing();
+      }
+      if(animateClimb==false && animateJump == false){
+        playerGravity();
+      }
+      /*if(animateLeft){
+        playerWalkLeft();
+      }*/
+    }
     
     
   }

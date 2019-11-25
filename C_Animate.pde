@@ -17,9 +17,11 @@ int nowPlayerWalk = -50;
 int waitTimePlayerWalk = -50;
 //Intro push:
 boolean introPushCycle = true;
+int introPushCycleFrame = 0;
 int nowintroPush = -100;
 int waitTimeintroPush = -100;
 boolean introPushed = false;
+boolean startLevel = false;
 
 int won = 0;
 
@@ -304,18 +306,33 @@ int checkStars(){
       System.out.println("meep");
     }*/
 void introPush(){
-  if(introPushCycle){
+  player1.setX(startX0);
+  player1.setY(startY0);
+  drawPlayer(player1);
+  if(  introPushCycle){
     nowintroPush = millis();
     waitTimeintroPush = 1000;
     introPushCycle = false;
   }
   if(millis() > nowintroPush + waitTimeintroPush){
-    defaultRect(120,0);
-    rect(-1,0,49,sH);
-    player1.setX(player1.getX()+1);
-    introPushed = true;
-    introPushCycle = true;
+    if(introPushCycleFrame<2){
+      defaultRect(120,0);
+      rect(-1,introPushCycleFrame*25,49,sH);
+      introPushCycle = true;
+      introPushCycleFrame++;
+    }
+    if(introPushCycleFrame == 2){
+      player1.setX(player1.getX()+1);
+      introPushCycleFrame = 3;
+    }
   }  
+  if(player1.getX() == 1 && player1.getY() == 23){
+    player1.setY(startY0);  
+    drawPlayer(player1);
+    
+    introPushed = true;
+    startLevel = true;
+  }
 }
 //----------@----------@----------@----------@----------@----------@----------  
 //----------@----------@----------@----------@----------@----------@----------  
