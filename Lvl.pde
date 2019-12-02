@@ -1,3 +1,6 @@
+int[] levelStars = {0,0,0,
+                    0,0,0,
+                    0,0,0};
 ArrayList<level> levels = new ArrayList<level>();
 level lvl1 = new level();
 level lvl2 = new level();
@@ -11,7 +14,7 @@ void setupLevels(){
   //BlockStarts:
   int[] lvl1X = {17,19,19,19, 1,3,5, 17, 16, 7,9, 17, 1,3,5,7,9, 1,3,5,7,9, 11,14,14, 16,16,16, 11,17};
   int[] shape1 = {0,0,0,0, 0,0,0, 0, 5, 0,0, 0, 0,0,0,0,0, 0,0,0,0,0, 7,0,0, 5,5,5, 8,0}; 
-  int[] blockSpeed1 = {0,5,5,170, 40,35,30, 50, 50, 40,40, 120, 35,30,25,20,15, 30,30,30,30,30, 50,120,5, 5,5,5, 850,50};
+  int[] blockSpeed1 = {0,5,5,210, 40,35,30, 50, 50, 40,40, 120, 35,30,25,20,15, 30,30,30,30,30, 50,120,5, 5,5,5, 850,50};
   //PlayerStart:
   int startX1 = 0;
   int startY1 = gridR-((lvl+startH[lvl-1])*2+5);
@@ -21,22 +24,22 @@ void setupLevels(){
   int winX1 = 21;
   int winY1 = gridR-((lvl+startH[lvl-1])*2+5);
   int mainBlockSpeed1 = 250;
-  int[] star1 = {4,12,29};
+  int[] star1 = {4,27};
   
   //BlockStarts:
-  int[] lvl2X = {3,3,1,1,1,1,4,18,5,7,9,12,15,18,5,7,9,12,14,16,18,5,7,9,12,15,18,5,7,9,12,14,16,18,5,7,9,12,15,18,5,7,9,12,14,16,18};
-  int[] shape2 = {0,2,0,6,3,4,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-  int[] blockSpeed2 = {0,5,130,120,70,70,50,50,40,40,40,50,50,5,50,50,50,50,50,50,50,40,40,40,50,50,5,50,50,50,50,50,50,50,40,40,40,50,50,5,30,30,30,30,30,30,30};
+  int[] lvl2X = {11, 19,17,15,13,19,17,15,13,19,17,15,13, 1,3,5,7,7, 9}; 
+  int[] shape2 = {0, 0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0, 0};
+  int[] blockSpeed2 = {5, 5,5,5,5,4,4,4,4,50,50,50,50, 50,50,50,50,50, 200};
   //PlayerStart:
-  int startX2 = 1;
-  int startY2 = gridR-3;
+  int startX2 = 0;
+  int startY2 = gridR-((lvl+startH[lvl-1])*2+5);
   boolean[] gBIA2 = {true,false,false,false,false,false,false,false,false,false,false};
   //Other:
   boolean hasControl2 = true; 
-  int winX2 = 0;
-  int winY2 = 0;
+  int winX2 = 21;
+  int winY2 = gridR-((lvl+startH[lvl-1])*2+5);;
   int mainBlockSpeed2 = 700;
-  int[] star2 = {0,0,0};
+  int[] star2 = {13  ,0,0};
   
   //BlockStarts:
   int[] lvl3X = {3,6,9,3,18,15};

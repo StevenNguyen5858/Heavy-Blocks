@@ -1,6 +1,4 @@
-int[] levelStars = {0,0,0,
-                    0,0,0,
-                    0,0,0};
+button temp = new button();
 void activatePage(page p){
   if(p != main){
     typingCommands = false;  
@@ -16,6 +14,10 @@ void activatePage(page p){
 }
 
 void drawFrame(page p){
+  if(p == play2 && !toggleSoundB.isSelected()){
+    //music.play(); 
+    music.loop();
+  }
   screenLayout(p);
   drawPageButtons(p);
   
@@ -52,9 +54,15 @@ void screenLayout(page p){
  if(name.equals("play2.pg")){
    basicCorners(lvl);
    
+   int space = (lvl+startH[lvl-1])*(50) + 51;
+   defaultRect(120,0);
    if(introPushed){
      defaultRect(120,0);
-     rect(-1,0,49,sH);  
+     rect(-1,0,49,sH-1);
+   }else if(introPushCycleFrame == 3){
+     rect(-1,space+4,49,171);
+   }else{
+     rect(-1,space+4,introPushCycleFrame*25-1,171);
    }
    
    defaultText(0,0,30);
@@ -84,7 +92,7 @@ void screenLayout(page p){
    drawStars(won);
    
    clearLvlData();
-   
+   music.stop();
  }
 }
 void drawPageButtons(page p){
@@ -102,14 +110,13 @@ void drawPageButtons(page p){
     drawButton(p.getPageButtons().get(i));
   }
 }
-
 void hitCheckPage(page p){
   if(p.isActive()){
     String name = p.specialFunctTag();
     if(name.equals("levels.pg")){
       for(int y = 1; y<=3; y++){
         for(int x = 1; x<=3; x++){
-          button temp = new button(210,210,210,0,"tempLevels",55+100*x,100*y-20,80,80);
+          temp = new button(210,210,210,0,"tempLevels",55+100*x,100*y-20,80,80);
           temp.setButtonTag(x+(y-1)*3);
           toggleSelect(temp);
         }

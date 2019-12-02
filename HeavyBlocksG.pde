@@ -10,7 +10,7 @@ void settings(){
 
 //Layout/Screen ish is in button functions
 void setup(){
- background(150);
+ drawLoadScreen();
  setupButtons();
  setupShapes();
  setupPresets();
@@ -30,11 +30,29 @@ void draw(){
   //play screen animations:
   if(play2.isActive()){
     if(introPushed == false){
+      screenLayout(play2);
+      drawBinaryBlocksPB();
+      drawPageButtons(play2);
+      playerBounds();
+      if(startOnce == false && waitedOnce == false && pressedContinue == false && pressedSave == false){
+        //prepIntro:
+        player1.setX(startX0);
+        player1.setY(startY0);
+        block.setX(lvlX0[plannedIndex0]);
+        block.setY(lvlY0);  
+        block.setShape(shapes.get(shapes0[plannedIndex0]));
+        startOnce = true;
+      }
+ 
       introPush();
-      playerGravity();
+      
+      if(introPushCycleFrame == 3){
+        playerGravity();
+      }
+      drawPlayer(player1);
     }
     
-    if(startLevel){
+    if(startedLevel){
       animateFallingBlocks();
       //Player movement
       if(animateClimb){
@@ -76,8 +94,9 @@ void keyPressed(){
   if(hasControl0 && play2.isActive()){
     controls();
   }
-  player1Controls();
-  
+  if(startedLevel){
+    player1Controls();
+  }
   if(key == '/'){
     
     developerCommand = "";

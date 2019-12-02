@@ -5,71 +5,93 @@ boolean setupCustomAnimate = false;
 int lvlLock = 0;
 //----------@----------@----------@----------@----------@----------@----------  
 //----------@----------@----------@----------@----------@----------@----------  
-void buttonFunctions(button b){
+boolean buttonFunctions(button b){
   String name = b.getName();
   
   if(name.equals("Levels") || name.equals("backToLevelsWB")){
-    activatePage(levelsP); 
+    activatePage(levelsP);
+    return true;
   }
   if(name.equals("Play")){
     lvlLock = lvl;
     activatePage(play1); 
     setgBIA();
     setupLevel();
+    return true;
   }
   if(name.equals("escToMainScreen")){
     activatePage(main);
+    return true;
   }
-  if(name.equals("tempLevels")){
+  if((b.getButtonTag() == 1&&name.equals("tempLevels")) || (name.equals("tempLevels")&&levelStars[b.getButtonTag()-2]>0)){
     lvl = b.getButtonTag();
     lvlLock = lvl;
     activatePage(play1);
     setgBIA();
     setupLevel();
+    return true;
   }
   if(name.equals("PlayB")){
     activatePage(play2);
     customCycle = true;
     waitedOnce = false;
     setupCustomAnimate = true;
+    return true;
   }
   if(name.equals("NextWB") && won>0){
+    lvlLock = lvl;
     lvl = lvlLock+1;
     activatePage(play1);
     setgBIA();
     setupLevel();
+    return true;
   }
   if(name.equals("Pause")){
+    music.pause();
     activatePage(pause);
+    return true;
+  }
+  if(name.equals("toggleSound")){
+    b.setIsSelected(true);
+    music.pause();
+    return true;
   }
   if(name.equals("Continue")){
     activatePage(play2); 
     customCycle = true;
     waitedOnce = false;
     pressedContinue = true;
+    return true;
   }
   if(name.equals("Restart")){
     clearLvlData();
-    activatePage(play2);  
+    activatePage(play2); 
+    return true;
   }
   if(name.equals("RestartWB")){
     clearLvlData();
     activatePage(play2);
+    return true;
   }
   if(name.equals("Save & Exit")){
     pressedSave = true;
     activatePage(main); 
+    return true;
   }
   if(name.equals("MainScreen")){
     clearLvlData();
-    activatePage(main); 
+    activatePage(main);
+    return true;
   }
-  
+  return false;
 }
 
 
 void revertButtonFunctions(button b){
   String name =  b.getName(); 
+  if(name.equals("toggleSound")){
+    music.play();  
+  }
 }
 //----------@----------@----------@----------@----------@----------@----------  
 //----------@----------@----------@----------@----------@----------@----------  
@@ -90,11 +112,14 @@ void drawButton(button b){
       defaultRect(255,234,0,0);
       rect(b.getX()-5+20*i,b.getY()+(b.getH()*.70), 10,10);
     }
+    if(b.getButtonTag() != 1 && levelStars[b.getButtonTag()-2]==0){
+      fill(0,120);
+      rect(b.getX(),b.getY(),b.getW(),b.getH());
+    }
   }
   if(name.equals("openLevelsEditor")){
     //--2;
     defaultText(255,255,15);
-    System.out.println("ope");
     text("Edit Levels",b.getX()+b.getW()/2-(textWidth("Edit Levels"))/2,b.getY()+(b.getH()*.75) );
   }
   if(name.equals("PlayB")){
@@ -106,6 +131,11 @@ void drawButton(button b){
     rect(64,14,6,16);
     rect(74,14,6,16);
   }
+  if(name.equals("toggleSound") && b.isSelected()){
+    defaultRect(0,120);
+    rect(b.getX(),b.getY(),b.getW(),b.getH());
+  }
+  //-- toggleSound
   if(name.equals("Continue")|| name.equals("Restart") || name.equals("Save & Exit") || name.equals("MainScreen")){
     defaultRect(b.getRed(),b.getGreen(),b.getBlue(),b.getStroke());
     rect(b.getX()-2,b.getY(),b.getW()+3,b.getH());
@@ -157,7 +187,14 @@ void setgBIA(){
   }
 }
 
+//resetting dating when restart or saves donot occur:
 void clearLvlData(){
+  introPushCycle = true;
+  introPushCycleFrame = 0;
+  introPushed = false;
+  startedLevel = false;
+  startOnce = false;
+  
   plannedIndex0 = 0;
   waitedOnce = false;
   pressedContinue = false;

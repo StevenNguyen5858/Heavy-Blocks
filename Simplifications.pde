@@ -78,17 +78,16 @@ void basicCorners(int h){
 //ToggleSelect/button control:
 void toggleSelect(button b){
   if(hitCheck(b) && !b.isSelected()){
-    if(b != playNextWB || b == playNextWB && won>0){
-      selectOn(b);
-    }
-  }else{
+    selectOn(b);
+  }else if(hitCheck(b)){
     selectOff(b);
   }
 }
 void selectOn(button b){
-  defaultRect(-1,#00B0FF);
-  rect(b.getX(),b.getY(),b.getW(),b.getH());
-  buttonFunctions(b);
+  if(buttonFunctions(b)){
+    defaultRect(-1,#00B0FF);
+    rect(b.getX(),b.getY(),b.getW(),b.getH());
+  }
 }
 void selectOff(button b){
   if(b.isSelected()){

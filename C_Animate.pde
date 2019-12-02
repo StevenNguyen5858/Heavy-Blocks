@@ -21,8 +21,8 @@ int introPushCycleFrame = 0;
 int nowintroPush = -100;
 int waitTimeintroPush = -100;
 boolean introPushed = false;
-boolean startLevel = false;
-
+boolean startedLevel = false;
+boolean startOnce = false;
 int won = 0;
 
 int[] lvlX0;
@@ -46,13 +46,6 @@ void setupAnimate(){
 }
 //Animation Compiling methods:
 void animateFallingBlocks(){
-    if(waitedOnce == false && pressedContinue == false && pressedSave == false){
-      block.setX(lvlX0[plannedIndex0]);
-      block.setY(lvlY0);  
-      player1.setX(startX0);
-      player1.setY(startY0); 
-      block.setShape(shapes.get(shapes0[plannedIndex0]));
-    }
     if(customCycle && waitedOnce==true){
       nowCustom = millis();
       waitTimeCustom = blockSpeed0[plannedIndex0];
@@ -233,8 +226,8 @@ void drawBinaryBlocks(){
 void drawBinaryBlocksPB(){
   //--2 add limit to x starting at int x = 1 to x<gridC-1 to remove side border blocks visually
   //--2 add limit to y at y<gridR-1 to remove bottum visual border blocks visually
-  for(int y = 0; y<gridR; y++){
-    for(int x = 0; x<gridC; x++){
+  for(int y = 0; y<gridR-1; y++){
+    for(int x = 1; x<gridC-1; x++){
       if(binaryBlocksPB[x][y] == true){
         defaultRect(255,255);
         shape tempShape = new shape(shapes.get(5),x,y,true);
@@ -294,44 +287,38 @@ void checkWin(){
 }
 
 int checkStars(){
-  for(int i = 0; i<3; i++){
+  for(int i = 0; i<2; i++){
     if(plannedIndex0 <= star0[i]){
       return 3-i;
     }
   }
-  return 0;
+  return 1;
 }
 /*if(introPushed == false && millis() > nowCustom + ){
       introPush();
       System.out.println("meep");
     }*/
 void introPush(){
-  player1.setX(startX0);
-  player1.setY(startY0);
   drawPlayer(player1);
-  if(  introPushCycle){
+  if(introPushCycle){
     nowintroPush = millis();
     waitTimeintroPush = 1000;
     introPushCycle = false;
   }
   if(millis() > nowintroPush + waitTimeintroPush){
     if(introPushCycleFrame<2){
-      defaultRect(120,0);
-      rect(-1,introPushCycleFrame*25,49,sH);
       introPushCycle = true;
       introPushCycleFrame++;
     }
     if(introPushCycleFrame == 2){
       player1.setX(player1.getX()+1);
+      drawPlayer(player1);
       introPushCycleFrame = 3;
     }
   }  
-  if(player1.getX() == 1 && player1.getY() == 23){
-    player1.setY(startY0);  
-    drawPlayer(player1);
-    
+  if(player1.getX() == 1 && blockCanMove(player1.getX(),player1.getY()+1,player1.getShape(),true) == false){ 
     introPushed = true;
-    startLevel = true;
+    startedLevel = true;
   }
 }
 //----------@----------@----------@----------@----------@----------@----------  

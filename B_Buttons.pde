@@ -14,6 +14,7 @@ button openSettingsB = new button();
 
 button playB = new button();
 button pauseB = new button();
+button toggleSoundB = new button();
 button continueB = new button();
 button restartB = new button();
 button saveProgressB = new button();
@@ -34,6 +35,7 @@ void setupButtons(){
   
   playB = new button(120,120,120,0,"PlayB",sW/2-50,sH/2-40,100,60);
   pauseB = new button(180,180,180,0,"Pause",60,10,24,24);
+  toggleSoundB = new button(180,180,180,0,"toggleSound",90,10,24,24);
   continueB = new button(120,120,120,0,"Continue",sW/2-100,80,200,35);
   restartB = new button(120,120,120,0,"Restart",sW/2-100,120,200,35);
   saveProgressB = new button(120,120,120,0,"Save & Exit",sW/2-100,160,200,35);
@@ -59,6 +61,7 @@ void setupButtons(){
   play1ScreenButtons.add(playB);
   
   play2ScreenButtons.add(pauseB);
+  play2ScreenButtons.add(toggleSoundB);
   
   pauseScreenButtons.add(continueB);
   pauseScreenButtons.add(restartB);
