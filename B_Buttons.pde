@@ -41,7 +41,7 @@ void setupButtons(){
   saveProgressB = new button(120,120,120,0,"Save & Exit",sW/2-100,160,200,35);
   mainScreenB = new button(120,120,120,0,"MainScreen",sW/2-100,200,200,35);
   
-  exitToMainScreenB = new button(232,0,4,0,"escToMainScreen",60,10,35,20);
+  exitToMainScreenB = new button(120,120,120,0,"escToMainScreen",60,10,24,24);
   openLevelsEditorB = new button(180,180,180,0,"openLevelsEditor",sW-145,10,85,23);
   
   backToLevelsWB = new button(120,120,120,0,"backToLevelsWB",sW/2-90,270,40,40);

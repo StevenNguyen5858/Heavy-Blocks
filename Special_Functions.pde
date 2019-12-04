@@ -169,6 +169,10 @@ void drawButton(button b){
     defaultRect(-1,0);
     rect(b.getX(),b.getY(),b.getW(),b.getH());
   }
+  if(name.equals("escToMainScreen")){
+    System.out.println("heyyy");
+    image(home,b.getX()+1,b.getY()+1);
+  }
 }
  
  
