@@ -3,6 +3,7 @@ page main = new page();
 page levelsP = new page();
 page play1 = new page();
 page play2 = new page();
+page controls = new page();
 page pause = new page();
 page endP = new page();
 page levelsEditorP = new page();
@@ -11,6 +12,7 @@ void setupPages(){
   levelsP = new page(levelsScreenButtons,false,false,"levels");
   play1 = new page(play1ScreenButtons,false,false,"play1");
   play2 = new page(play2ScreenButtons,false,false,"play2");
+  controls = new page(controlsScreenButtons,false,false,"controls");
   pause = new page(pauseScreenButtons,false,false,"pause"); 
   endP = new page(winScreenButtons,false,false,"endP");
   levelsEditorP = new page(levelsEditorScreenButtons,false,false,"levelsEditor");
@@ -18,6 +20,7 @@ void setupPages(){
   pages.add(levelsP);
   pages.add(play1);
   pages.add(play2);
+  pages.add(controls);
   pages.add(pause);
   pages.add(endP);
   pages.add(levelsEditorP);

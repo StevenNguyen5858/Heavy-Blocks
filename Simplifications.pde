@@ -77,10 +77,14 @@ void basicCorners(int h){
 //----------@----------@----------@----------@----------@----------@----------  
 //ToggleSelect/button control:
 void toggleSelect(button b){
+  if(b == jumpB || b == moveLeftB || b == moveRightB || b == climbB){
+   selectOff(b); 
+  }
   if(hitCheck(b) && !b.isSelected()){
     selectOn(b);
   }else if(hitCheck(b)){
     selectOff(b);
+    revertButtonFunctions(b);
   }
 }
 void selectOn(button b){
@@ -94,7 +98,6 @@ void selectOff(button b){
     defaultRect(-1,b.getStroke());
     rect(b.getX(),b.getY(),b.getW(),b.getH());
     b.setIsSelected(false);
-    revertButtonFunctions(b);
   }
 }  
   

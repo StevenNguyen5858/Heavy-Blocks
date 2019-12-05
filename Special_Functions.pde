@@ -8,15 +8,19 @@ int lvlLock = 0;
 boolean buttonFunctions(button b){
   String name = b.getName();
   
-  if(name.equals("Levels") || name.equals("backToLevelsWB")){
-    activatePage(levelsP);
-    return true;
-  }
   if(name.equals("Play")){
     lvlLock = lvl;
     activatePage(play1); 
     setgBIA();
     setupLevel();
+    return true;
+  }
+  if(name.equals("Levels") || name.equals("backToLevelsWB")){
+    activatePage(levelsP);
+    return true;
+  }
+  if(name.equals("Controls")){
+    activatePage(controls);  
     return true;
   }
   if(name.equals("escToMainScreen")){
@@ -83,6 +87,28 @@ boolean buttonFunctions(button b){
     activatePage(main);
     return true;
   }
+  
+  isBinding = 0;
+  if(name.equals("climbB")){
+    b.setIsSelected(true);
+    isBinding = 1;
+    return true;
+  }
+  if(name.equals("moveLeftB")){
+    b.setIsSelected(true);
+    isBinding = 2;
+    return true;  
+  }
+  if(name.equals("moveRightB")){
+    b.setIsSelected(true);
+    isBinding = 3;
+    return true;  
+  }
+  if(name.equals("jumpB")){
+    b.setIsSelected(true);
+    isBinding = 4;
+    return true;  
+  }
   return false;
 }
 
@@ -131,10 +157,6 @@ void drawButton(button b){
     rect(64,14,6,16);
     rect(74,14,6,16);
   }
-  if(name.equals("toggleSound") && b.isSelected()){
-    defaultRect(0,120);
-    rect(b.getX(),b.getY(),b.getW(),b.getH());
-  }
   //-- toggleSound
   if(name.equals("Continue")|| name.equals("Restart") || name.equals("Save & Exit") || name.equals("MainScreen")){
     defaultRect(b.getRed(),b.getGreen(),b.getBlue(),b.getStroke());
@@ -169,9 +191,52 @@ void drawButton(button b){
     defaultRect(-1,0);
     rect(b.getX(),b.getY(),b.getW(),b.getH());
   }
+  
+  //--2 Need to Reposition-
+  if(name.equals("climbB")){
+    defaultText(0,0,10);
+    text("Click, then press any key to set keybind",b.getX()+2,b.getY()-4);
+    defaultText(0,0,20);
+    text("Climb",b.getX()+5,b.getY()+b.getH()*.73);
+    text("  '" + climb + "'", b.getX()+5 + textWidth("Climb "),b.getY()+b.getH()*.73);
+    defaultText(0,0,30);
+    text("|", b.getX()+65,b.getY()+b.getH()*.78);
+  }
+  if(name.equals("moveLeftB")){
+    defaultText(0,0,10);
+    text("Click, then press any key to set keybind",b.getX()+2,b.getY()-4);
+    defaultText(0,0,20);
+    text("Left",b.getX()+5,b.getY()+b.getH()*.73);
+    text("  '" + left + "'", b.getX()+5 + textWidth("Climb "),b.getY()+b.getH()*.73);
+    defaultText(0,0,30);
+    text("|", b.getX()+65,b.getY()+b.getH()*.78);
+  }
+  if(name.equals("moveRightB")){
+    defaultText(0,0,10);
+    text("Click, then press any key to set keybind",b.getX()+2,b.getY()-4);
+    defaultText(0,0,20);
+    text("Right",b.getX()+5,b.getY()+b.getH()*.73);
+    text("  '" + right + "'", b.getX()+5 + textWidth("Climb "),b.getY()+b.getH()*.73);
+    defaultText(0,0,30);
+    text("|", b.getX()+65,b.getY()+b.getH()*.78);
+  }
+  if(name.equals("jumpB")){
+    defaultText(0,0,10);
+    text("Click, then press any key to set keybind",b.getX()+2,b.getY()-4);
+    defaultText(0,0,20);
+    text("Jump",b.getX()+5,b.getY()+b.getH()*.73);
+    text("  '" + jump + "'", b.getX()+5 + textWidth("Climb "),b.getY()+b.getH()*.73);
+    defaultText(0,0,30);
+    text("|", b.getX()+65,b.getY()+b.getH()*.78);
+  }
+  
   if(name.equals("escToMainScreen")){
-    System.out.println("heyyy");
     image(home,b.getX()+1,b.getY()+1);
+  }
+  if(name.equals("toggleSound") && b.isSelected()){
+    image(soundOff,b.getX()+1,b.getY()+1);
+  }else if(name.equals("toggleSound")){
+    image(soundOn,b.getX()+1,b.getY()+1);
   }
 }
  

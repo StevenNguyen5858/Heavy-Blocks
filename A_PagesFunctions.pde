@@ -35,6 +35,14 @@ void screenLayout(page p){
    defaultRect(120,0);
    rect(sW/2-120,60,240,270);
  }
+ if(name.equals("controls.pg")){
+   basicCorners(2);
+   
+   defaultText(0,0,30);
+   text("Controls:",sW/2-(textWidth("Controls")/2),50);
+   defaultRect(120,0);
+   rect(sW/2-120,60,240,270);
+ }
  
  //LevelsScreen page
  if(name.equals("levels.pg")){

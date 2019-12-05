@@ -3,6 +3,7 @@ ArrayList<button> levelsScreenButtons = new ArrayList<button>();
   ArrayList<button> lSBRating = new ArrayList<button>();
 ArrayList<button> play1ScreenButtons = new ArrayList<button>();
 ArrayList<button> play2ScreenButtons = new ArrayList<button>();
+ArrayList<button> controlsScreenButtons = new ArrayList<button>();
 ArrayList<button> pauseScreenButtons = new ArrayList<button>();
 ArrayList<button> winScreenButtons = new ArrayList<button>();
 ArrayList<button> levelsEditorScreenButtons = new ArrayList<button>();
@@ -22,6 +23,11 @@ button mainScreenB = new button();
 
 button exitToMainScreenB = new button();
 button openLevelsEditorB = new button();
+
+button climbB = new button();
+button moveLeftB = new button();
+button moveRightB = new button();
+button jumpB = new button();
 
 button backToLevelsWB = new button();
 button restartWB = new button();
@@ -44,6 +50,11 @@ void setupButtons(){
   exitToMainScreenB = new button(120,120,120,0,"escToMainScreen",60,10,24,24);
   openLevelsEditorB = new button(180,180,180,0,"openLevelsEditor",sW-145,10,85,23);
   
+  climbB = new button(120,120,120,0,"climbB",sW/2-100,95,200,35);
+  moveLeftB = new button(120,120,120,0,"moveLeftB",sW/2-100,150,200,35);
+  moveRightB= new button(120,120,120,0,"moveRightB",sW/2-100,205,200,35);
+  jumpB = new button(120,120,120,0,"jumpB",sW/2-100,260,200,35);
+  
   backToLevelsWB = new button(120,120,120,0,"backToLevelsWB",sW/2-90,270,40,40);
   restartWB = new button(120,120,120,0,"RestartWB",sW/2-20,270,40,40);
   playNextWB = new button(120,120,120,0,"NextWB",sW/2+50,270,40,40);
@@ -56,6 +67,12 @@ void setupButtons(){
   levelsScreenButtons.add(exitToMainScreenB);
   levelsScreenButtons.add(openLevelsEditorB);
 //levelsScreenButtons.add(tempForLoopButtons);
+  
+  controlsScreenButtons.add(climbB);
+  controlsScreenButtons.add(moveLeftB);
+  controlsScreenButtons.add(moveRightB);
+  controlsScreenButtons.add(jumpB);
+  controlsScreenButtons.add(exitToMainScreenB);
   
   play1ScreenButtons.add(exitToMainScreenB);
   play1ScreenButtons.add(playB);

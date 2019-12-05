@@ -106,7 +106,27 @@ void keyPressed(){
   if(typingCommands){
     developerCommands();
   }
-  
+  //--2 Currently user can only reassign controls to characters and space, CODED keys will not work (LEFT,RIGHT,etc.)
+  if(isBinding>0){
+    if(isBinding == 1){
+      climb = key;
+      selectOff(climbB);
+    }
+    if(isBinding == 2){
+      left = key;
+      selectOff(moveLeftB);
+    }
+    if(isBinding == 3){
+      right = key;
+      selectOff(moveRightB);
+    }
+    if(isBinding == 4){
+      jump = key;
+      selectOff(jumpB);
+    } 
+    isBinding = 0;
+    drawFrame(controls);
+  }
 }
 void keyReleased(){
   player1ControlsR();

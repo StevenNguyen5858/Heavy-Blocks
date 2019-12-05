@@ -12,6 +12,7 @@ boolean animateLeft = false;
 boolean animateRight = false;
 boolean climbRight = false;
 int climbFrame = 0;
+int isBinding = 0;
 
 //player frame animation:
 int playerFrameWalk = 0;
