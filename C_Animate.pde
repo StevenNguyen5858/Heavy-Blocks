@@ -75,10 +75,6 @@ void animateFallingBlocks(){
     drawBinaryBlocksPB();
     drawPageButtons(play2);
     
-    System.out.println(player1.getX() + "x");
-    System.out.println(player1.getY() + "y");
-    System.out.println(winX0 + "Winx");
-    System.out.println(winY0 + "Winy");
     if(player1.getX()==winX0 && player1.getY()==winY0){
       activatePage(endP);
     }

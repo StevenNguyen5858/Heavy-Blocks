@@ -40,6 +40,14 @@ int[][] BUL =
   {{1,1,1},
    {0,0,1},
    {0,0,0}};
+int[][] ll = 
+  {{1,1,0},
+   {1,1,0},
+   {1,1,0}};
+int[][] kl =
+  {{0,0,1},
+   {1,1,1},
+   {0,0,0}};
 ArrayList<shape> gameBlocks = new ArrayList<shape>();
 shape block = new shape();
 shape trace1 = new shape();
@@ -63,6 +71,8 @@ void setupShapes(){
   shapes.add(SL);
   shapes.add(USL);
   shapes.add(BUL);
+  shapes.add(ll);
+  shapes.add(kl);
   
   gameBlocks.add(block);
   gameBlocks.add(trace1);

@@ -193,6 +193,7 @@ void drawButton(button b){
   }
   
   //--2 Need to Reposition-
+  
   if(name.equals("climbB")){
     defaultText(0,0,10);
     text("Click, then press any key to set keybind",b.getX()+2,b.getY()-4);

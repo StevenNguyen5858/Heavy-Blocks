@@ -6,6 +6,10 @@ char left = 'a';
 char right = 'd';
 char jump = ' ';
 char climb = 'w';
+int leftCode;
+int rightCode;
+int jumpCode;
+int climbCode;
 boolean animateClimb = false;
 boolean animateJump = false;
 boolean animateLeft = false;
@@ -14,32 +18,23 @@ boolean climbRight = false;
 int climbFrame = 0;
 int isBinding = 0;
 
+
 //player frame animation:
 int playerFrameWalk = 0;
 color playerColor = #CF00FF;
-void controls(){
-  if(key == CODED){
-    if(keyCode == LEFT && blockCanMove(block.getX()-1,block.getY(),block.getShape(),false)){
-      block.setX(block.getX()-1);  
-    }
-    if(keyCode == RIGHT && blockCanMove(block.getX()+1,block.getY(),block.getShape(),false)){
-      block.setX(block.getX()+1);  
-    }
-  }
-}
 
 void player1Controls(){
-  if(key==climb){
+  if(key==climb || keyCode == climbCode){
     //A key combo of 'climb' + 'a' or 'd' needs to be used to climb left or right:
     climbK = true;
   }
-  if(key==left){
+  if(key==left || keyCode == leftCode){
     leftK = true;
   }
-  if(key==right){
+  if(key==right || keyCode == rightCode){
     rightK = true;  
   }
-  if(key==jump){
+  if(key==jump || keyCode == jumpCode){
     jumpK = true;  
   }
   //climb up2 right1:
@@ -59,31 +54,31 @@ void player1Controls(){
     }
   }else{
     //move left:
-    if(key == left && blockCanMove(player1.getX()-1,player1.getY(),player1.getShape(),true)){
+    if((key == left || keyCode == leftCode) && blockCanMove(player1.getX()-1,player1.getY(),player1.getShape(),true)){
       player1.setX(player1.getX()-1);
     }
     //move right:
-    if(key == right && blockCanMove(player1.getX()+1,player1.getY(),player1.getShape(),true)){
+    if((key == right || keyCode == rightCode ) && blockCanMove(player1.getX()+1,player1.getY(),player1.getShape(),true)){
       player1.setX(player1.getX()+1);
     }
     //jump:
-     if(key == jump && blockCanMove(player1.getX(),player1.getY()-1,player1.getShape(),true) &&
+     if((key == jump || keyCode == jumpCode) && blockCanMove(player1.getX(),player1.getY()-1,player1.getShape(),true) &&
      blockCanMove(player1.getX(),player1.getY()+1,player1.getShape(),true) == false){
       player1.setY(player1.getY()-1);
     }
   }
 }
 void player1ControlsR(){
-  if(key == climb){
+  if(key == climb || keyCode == climbCode){
     climbK = false;
   }
-  if(key == left){
+  if(key == left || keyCode == leftCode){
     leftK = false;
   }
-  if(key == right){
+  if(key == right || keyCode == rightCode){
     rightK = false;  
   }
-  if(key == jump){
+  if(key == jump || keyCode == jumpCode){
     jumpK = false;  
   }
 }

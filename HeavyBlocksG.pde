@@ -91,9 +91,6 @@ void mousePressed(){
 String developerCommand  = "";
 boolean typingCommands = false;
 void keyPressed(){
-  if(hasControl0 && play2.isActive()){
-    controls();
-  }
   if(startedLevel){
     player1Controls();
   }
@@ -109,19 +106,44 @@ void keyPressed(){
   //--2 Currently user can only reassign controls to characters and space, CODED keys will not work (LEFT,RIGHT,etc.)
   if(isBinding>0){
     if(isBinding == 1){
-      climb = key;
+      if(key == CODED){
+        climbCode = keyCode;
+        climb = '!';
+      }else{
+        climb = key;
+        climbCode = -1;
+      }
       selectOff(climbB);
     }
+    
     if(isBinding == 2){
-      left = key;
+      if(key == CODED){
+        leftCode = keyCode;
+        left = '@';
+      }else{
+        left = key;
+        leftCode = -2;
+      }
       selectOff(moveLeftB);
     }
     if(isBinding == 3){
-      right = key;
+      if(key == CODED){
+        rightCode = keyCode;
+        right = '#';
+      }else{
+        right = key;
+        rightCode = -3;
+      }
       selectOff(moveRightB);
     }
     if(isBinding == 4){
-      jump = key;
+      if(key == CODED){
+        jumpCode = LEFT;
+        jump = '$';
+      }else{
+        jump = key;
+        jumpCode = -4;
+      }
       selectOff(jumpB);
     } 
     isBinding = 0;

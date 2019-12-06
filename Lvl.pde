@@ -12,9 +12,9 @@ int[] startH = {1,0,0,0};
 void setupLevels(){
   //Format is repeated for each new level:
   //BlockStarts:
-  int[] lvl1X = {17,19,19,19, 1,3,5, 17, 16, 7,9, 17, 1,3,5,7,9, 1,3,5,7,9, 11,14,14, 16,16,16, 11,17};
-  int[] shape1 = {0,0,0,0, 0,0,0, 0, 5, 0,0, 0, 0,0,0,0,0, 0,0,0,0,0, 7,0,0, 5,5,5, 8,0}; 
-  int[] blockSpeed1 = {0,5,5,210, 40,35,30, 50, 50, 40,40, 120, 35,30,25,20,15, 30,30,30,30,30, 50,120,5, 5,5,5, 850,50};
+  int[] lvl1X = {17,19,19, 17, 15,15, 12, 15, 13,9,14,12};
+  int[] shape1 = {9,9,9, 9, 0,0, 0, 0, 0,10,5,5};
+  int[] blockSpeed1 = {0,5,5, 350, 40,35, 30, 550, 40,40,35,35};
   //PlayerStart:
   int startX1 = 0;
   int startY1 = gridR-((lvl+startH[lvl-1])*2+5);
@@ -23,13 +23,13 @@ void setupLevels(){
   boolean hasControl1 = false;
   int winX1 = 21;
   int winY1 = gridR-((lvl+startH[lvl-1])*2+5);
-  int mainBlockSpeed1 = 250;
-  int[] star1 = {4,27};
+  int mainBlockSpeed1 = 700;
+  int[] star1 = {6,9};
   
   //BlockStarts:
-  int[] lvl2X = {11, 19,17,15,13,19,17,15,13,19,17,15,13, 1,3,5,7,7, 9}; 
-  int[] shape2 = {0, 0,0,0,0,0,0,0,0,0,0,0,0, 0,0,0,0,0, 0};
-  int[] blockSpeed2 = {5, 5,5,5,5,4,4,4,4,50,50,50,50, 50,50,50,50,50, 200};
+  int[] lvl2X = {17,19,19,19, 1,3,5, 17, 16, 7,9, 17, 1,3,5,7,9, 1,3,5,7,9, 11,14,14, 16,16,16, 11,17};
+  int[] shape2 = {0,0,0,0, 0,0,0, 0, 5, 0,0, 0, 0,0,0,0,0, 0,0,0,0,0, 7,0,0, 5,5,5, 8,0}; 
+  int[] blockSpeed2 = {0,5,5,210, 40,35,30, 50, 50, 40,40, 120, 35,30,25,20,15, 30,30,30,30,30, 50,120,5, 5,5,5, 850,50};
   //PlayerStart:
   int startX2 = 0;
   int startY2 = gridR-((lvl+startH[lvl-1])*2+5);
@@ -38,8 +38,8 @@ void setupLevels(){
   boolean hasControl2 = true; 
   int winX2 = 21;
   int winY2 = gridR-((lvl+startH[lvl-1])*2+5);;
-  int mainBlockSpeed2 = 700;
-  int[] star2 = {13  ,0,0};
+  int mainBlockSpeed2 = 250;
+  int[] star2 = {4,27};
   
   //BlockStarts:
   int[] lvl3X = {3,6,9,3,18,15};
