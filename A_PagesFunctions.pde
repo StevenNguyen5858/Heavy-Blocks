@@ -51,6 +51,13 @@ void screenLayout(page p){
    defaultText(0,0,30);
    text("Levels",sW/2-(textWidth("Levels")/2),50);
  }
+ //levelsEditorScreen
+ if(name.equals("levelsEditor.pg")){
+   basicCorners(2);
+   
+   defaultText(0,0,30);
+   text("Levels Editor",sW/2-(textWidth("Levels Editor")/2),50);
+ }
  
  //PlayScreen pages
  if(name.equals("play1.pg")){
@@ -114,6 +121,16 @@ void drawPageButtons(page p){
       }
     }
   }
+  if(name.equals("levelsEditor.pg")){
+    for(int y = 1; y<=3; y++){
+      for(int x = 1; x<=3; x++){
+        tempEditB = new button(210,210,210,0,"tempLevelsEdit",55+100*x,100*y-20,80,80);
+        tempEditB.setButtonTag(3*(y-1)+x);
+        drawButton(tempEditB);
+      }
+    }
+  }
+  
   for(int i = 0; i<p.getPageButtons().size(); i++){
     drawButton(p.getPageButtons().get(i));
   }

@@ -10,6 +10,7 @@ ArrayList<button> levelsEditorScreenButtons = new ArrayList<button>();
 button openPlayB = new button();
 button openLevelsB = new button();
   button tempB = new button();
+  button tempEditB = new button();
 button openControlsB = new button();
 button openSettingsB = new button();
 
@@ -67,6 +68,8 @@ void setupButtons(){
   levelsScreenButtons.add(exitToMainScreenB);
   levelsScreenButtons.add(openLevelsEditorB);
 //levelsScreenButtons.add(tempForLoopButtons);
+  
+  levelsEditorScreenButtons.add(exitToMainScreenB);
   
   controlsScreenButtons.add(climbB);
   controlsScreenButtons.add(moveLeftB);

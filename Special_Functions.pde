@@ -35,6 +35,10 @@ boolean buttonFunctions(button b){
     setupLevel();
     return true;
   }
+  if(name.equals("tempLevelsEdit")){
+    //--2
+    return true;
+  }
   if(name.equals("PlayB")){
     activatePage(play2);
     customCycle = true;
@@ -109,6 +113,10 @@ boolean buttonFunctions(button b){
     isBinding = 4;
     return true;  
   }
+  if(name.equals("openLevelsEditor")){
+    activatePage(levelsEditorP);
+    return true;
+  }
   return false;
 }
 
@@ -142,6 +150,10 @@ void drawButton(button b){
       fill(0,120);
       rect(b.getX(),b.getY(),b.getW(),b.getH());
     }
+  }
+  if(name.equals("tempLevelsEdit")){
+    defaultText(0,0,25);
+    text("lvl." + b.getButtonTag(),b.getX()+b.getW()/2-(textWidth("lvl"+b.getButtonTag()))/2,b.getY()+(b.getH()*.50) ); 
   }
   if(name.equals("openLevelsEditor")){
     //--2;
