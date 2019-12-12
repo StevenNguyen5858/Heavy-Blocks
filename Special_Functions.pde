@@ -35,7 +35,11 @@ boolean buttonFunctions(button b){
     setupLevel();
     return true;
   }
-  if(name.equals("tempLevelsEdit")){
+  if((name.equals("tempLevelsEdit")&&levelStars[b.getButtonTag()-1]>0) ){
+    lvl = b.getButtonTag();
+    lvlLock = lvl;
+    activatePage(editLevel);
+    setupLevel();
     //--2
     return true;
   }
@@ -117,6 +121,11 @@ boolean buttonFunctions(button b){
     activatePage(levelsEditorP);
     return true;
   }
+  if(name.equals("editorShowGrid")){
+    b.setIsSelected(true);
+    grid();
+    return true;
+  }
   return false;
 }
 
@@ -125,6 +134,9 @@ void revertButtonFunctions(button b){
   String name =  b.getName(); 
   if(name.equals("toggleSound")){
     music.play();  
+  }
+  if(name.equals("editorShowGrid")){
+    drawFrame(editLevel);
   }
 }
 //----------@----------@----------@----------@----------@----------@----------  
@@ -154,6 +166,14 @@ void drawButton(button b){
   if(name.equals("tempLevelsEdit")){
     defaultText(0,0,25);
     text("lvl." + b.getButtonTag(),b.getX()+b.getW()/2-(textWidth("lvl"+b.getButtonTag()))/2,b.getY()+(b.getH()*.50) ); 
+    for(int i = 1; i<=levelStars[b.getButtonTag()-1]; i++){
+      defaultRect(255,234,0,0);
+      rect(b.getX()-5+20*i,b.getY()+(b.getH()*.70), 10,10);
+    }
+    if(levelStars[b.getButtonTag()-1]==0){
+      fill(0,120);
+      rect(b.getX(),b.getY(),b.getW(),b.getH());
+    }
   }
   if(name.equals("openLevelsEditor")){
     //--2;

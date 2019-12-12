@@ -52,7 +52,6 @@ void animateFallingBlocks(){
       customCycle = false;
     }
     screenLayout(play2);
-    //grid();---2
     blockBounds();
     playerBounds();
     if(millis() > nowCustom + waitTimeCustom){

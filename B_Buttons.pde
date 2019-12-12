@@ -7,6 +7,7 @@ ArrayList<button> controlsScreenButtons = new ArrayList<button>();
 ArrayList<button> pauseScreenButtons = new ArrayList<button>();
 ArrayList<button> winScreenButtons = new ArrayList<button>();
 ArrayList<button> levelsEditorScreenButtons = new ArrayList<button>();
+ArrayList<button> editLevelScreenButtons = new ArrayList<button>();
 button openPlayB = new button();
 button openLevelsB = new button();
   button tempB = new button();
@@ -24,6 +25,11 @@ button mainScreenB = new button();
 
 button exitToMainScreenB = new button();
 button openLevelsEditorB = new button();
+
+button editorPlayB = new button();
+button editorPauseB = new button();
+button editorShowGridB = new button();
+button editorShowLvlData = new button();
 
 button climbB = new button();
 button moveLeftB = new button();
@@ -51,6 +57,11 @@ void setupButtons(){
   exitToMainScreenB = new button(120,120,120,0,"escToMainScreen",60,10,24,24);
   openLevelsEditorB = new button(180,180,180,0,"openLevelsEditor",sW-145,10,85,23);
   
+  editorPlayB = new button(180,180,180,0,"editorPlay",90,10,24,24);
+  editorPauseB = new button(180,180,180,0,"editorPause",120,10,24,24);
+  editorShowGridB = new button(180,180,180,0,"editorShowGrid",150,10,24,24);
+  editorShowLvlData= new button(180,180,180,0,"editorShowLvlData",180,10,24,24);
+  
   climbB = new button(120,120,120,0,"climbB",sW/2-100,95,200,35);
   moveLeftB = new button(120,120,120,0,"moveLeftB",sW/2-100,150,200,35);
   moveRightB= new button(120,120,120,0,"moveRightB",sW/2-100,205,200,35);
@@ -70,6 +81,12 @@ void setupButtons(){
 //levelsScreenButtons.add(tempForLoopButtons);
   
   levelsEditorScreenButtons.add(exitToMainScreenB);
+  
+  editLevelScreenButtons.add(exitToMainScreenB);
+  editLevelScreenButtons.add(editorPlayB);
+  editLevelScreenButtons.add(editorPauseB);
+  editLevelScreenButtons.add(editorShowGridB);
+  editLevelScreenButtons.add(editorShowLvlData);
   
   controlsScreenButtons.add(climbB);
   controlsScreenButtons.add(moveLeftB);

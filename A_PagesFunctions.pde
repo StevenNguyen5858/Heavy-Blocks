@@ -1,4 +1,5 @@
 button temp = new button();
+button tempEdit = new button();
 void activatePage(page p){
   if(p != main){
     typingCommands = false;  
@@ -57,6 +58,12 @@ void screenLayout(page p){
    
    defaultText(0,0,30);
    text("Levels Editor",sW/2-(textWidth("Levels Editor")/2),50);
+ }
+ if(name.equals("editLevel.pg")){
+   basicCorners(lvl);
+   
+   defaultText(0,0,30);
+   text("Editing lvl " + lvl,sW/2-(textWidth("Editing lvl ")/2),60); 
  }
  
  //PlayScreen pages
@@ -144,6 +151,15 @@ void hitCheckPage(page p){
           temp = new button(210,210,210,0,"tempLevels",55+100*x,100*y-20,80,80);
           temp.setButtonTag(x+(y-1)*3);
           toggleSelect(temp);
+        }
+      }
+    }
+    if(name.equals("levelsEditor.pg")){
+      for(int y = 1; y<=3; y++){
+        for(int x = 1; x<=3; x++){
+          tempEdit = new button(210,210,210,0,"tempLevelsEdit",55+100*x,100*y-20,80,80);
+          tempEdit.setButtonTag(x+(y-1)*3);
+          toggleSelect(tempEdit);
         }
       }
     }
