@@ -21,7 +21,7 @@ int isBinding = 0;
 
 //player frame animation:
 int playerFrameWalk = 0;
-color playerColor = #CF00FF;
+int isWalking = 0;
 
 void player1Controls(){
   if(key==climb || keyCode == climbCode){
@@ -55,11 +55,11 @@ void player1Controls(){
   }else{
     //move left:
     if((key == left || keyCode == leftCode) && blockCanMove(player1.getX()-1,player1.getY(),player1.getShape(),true)){
-      player1.setX(player1.getX()-1);
+      isWalking = -1;
     }
     //move right:
     if((key == right || keyCode == rightCode ) && blockCanMove(player1.getX()+1,player1.getY(),player1.getShape(),true)){
-      player1.setX(player1.getX()+1);
+      isWalking = 1;
     }
     //jump:
      if((key == jump || keyCode == jumpCode) && blockCanMove(player1.getX(),player1.getY()-1,player1.getShape(),true) &&
@@ -74,9 +74,11 @@ void player1ControlsR(){
   }
   if(key == left || keyCode == leftCode){
     leftK = false;
+    isWalking = 0;
   }
   if(key == right || keyCode == rightCode){
     rightK = false;  
+    isWalking = 0;
   }
   if(key == jump || keyCode == jumpCode){
     jumpK = false;  
@@ -84,29 +86,35 @@ void player1ControlsR(){
 }
 
 void movePlayerHorizontal(){
-  if(playerFrameWalk == 4 || playerFrameWalk == -4){
-    playerColor = #FF0B03;
+  if(playerFrameWalk == 5 || playerFrameWalk == -5){
+    tempWalk = rest;
+  }
+  if(playerFrameWalk == -4){
+    tempWalk = upL;
   }
   if(playerFrameWalk == -3){
-    playerColor = #FF8E03;
+    tempWalk = passingL;
   }
   if(playerFrameWalk == -2){
-    playerColor = #FFF703;
+    tempWalk = downL;
   }
   if(playerFrameWalk == -1){
-    playerColor = #FF8E03;
+    tempWalk = contactL;
   }
   if(playerFrameWalk == 0){
-    playerColor = #FF0B03;
+    tempWalk = rest;
   }
   if(playerFrameWalk == 1){
-    playerColor = #FF8E03;
+    tempWalk = contact;
   }
   if(playerFrameWalk == 2){
-    playerColor = #FFF703;
+    tempWalk = down;
   }
   if(playerFrameWalk == 3){
-    playerColor = #FF8E03;
+    tempWalk = passing;
+  }
+  if(playerFrameWalk == 4){
+    tempWalk = up;  
   }
  
 }

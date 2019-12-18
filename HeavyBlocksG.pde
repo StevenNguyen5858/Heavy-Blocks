@@ -61,9 +61,9 @@ void draw(){
       if(animateClimb==false && animateJump == false){
         playerGravity();
       }
-      /*if(animateLeft){
-        playerWalkLeft();
-      }*/
+      if(isWalking != 0){
+        playerWalk();
+      }
     }
     
     

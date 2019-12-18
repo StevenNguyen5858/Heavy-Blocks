@@ -69,7 +69,7 @@ void animateFallingBlocks(){
     //shapes are set values into our drawBinaryBlocksPB therefore drawShape is unecessary
     //drawShape(block);
     drawPlayer(player1);
-    
+    grid();
     //drawBinaryBlocks();
     drawBinaryBlocksPB();
     drawPageButtons(play2);
@@ -106,20 +106,33 @@ void playerGravity(){
     playerGravityCycle = true;
   }  
 }
-void playerWalkLeft(){
+void playerWalk(){
   if(playerWalkCycle){
     nowPlayerWalk = millis();
     waitTimePlayerWalk = 50;
     playerWalkCycle = false;
   }
   if(millis() > nowPlayerWalk + waitTimePlayerWalk){
-    playerFrameWalk--;
+    
+    if(isWalking == -1){
+      playerFrameWalk--;
+    }
+    if(isWalking == 1){
+      playerFrameWalk++;
+    }
     movePlayerHorizontal();
-    if(playerFrameWalk == -4 || playerFrameWalk == 4 || playerFrameWalk == 0){
-      player1.setX(player1.getX()-1);
+    if(playerFrameWalk == -5 || playerFrameWalk == 5 || playerFrameWalk == 0){
+      if(isWalking == -1){
+        player1.setX(player1.getX()-1);
+      }
+      if(isWalking == 1){
+        player1.setX(player1.getX()+1);
+      }
       animateLeft = false;
     }
     playerWalkCycle = true;
+  
+  isWalking = 0;
   }  
 }
 //----------@----------@----------@----------@----------@----------@----------  

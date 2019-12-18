@@ -25,8 +25,8 @@ boolean drawNewBlock = false;
    {0,0,0},
    {0,0,0}};
 int[][] P = 
-  {{1,0,0},
-   {1,0,0},
+  {{0,1,0},
+   {0,1,0},
    {0,0,0}};
 int[][] SL = 
   {{1,1,1},
@@ -148,28 +148,82 @@ void drawShape(shape s){
       }
     }
   }
-  if(playerFrameWalk == 4){
-    playerFrameWalk = 0;  
-  }
-  if(playerFrameWalk == -4){
-    playerFrameWalk = 0;  
-  }
 }
 
 float animateTranslatePlayerX = 0;
 int animateTranslatePlayerY = 0;
 void drawPlayer(shape s){
-  if(Math.abs(playerFrameWalk)>=1 && Math.abs(playerFrameWalk)<=3){
-    animateTranslatePlayerX = playerFrameWalk*6.25;
+  if(Math.abs(playerFrameWalk)!=0 && Math.abs(playerFrameWalk)<=4){
+    animateTranslatePlayerX = (25/3)*playerFrameWalk;
   }else{
     animateTranslatePlayerX = 0;
   }
-  for(int y = 0; y<3; y++){
+  image(tempWalk,(gridBlockWidth*(s.getX()))+translateGridX+animateTranslatePlayerX,(gridBlockHeight*(s.getY()))+translateGridY+animateTranslatePlayerY);
+  if(playerFrameWalk == 5){
+    playerFrameWalk = 1;
+  }
+  if(playerFrameWalk == -5){
+    playerFrameWalk = -1;  
+  }
+  movePlayerHorizontal();
+
+  /*for(int y = 0; y<3; y++){
     for(int x = 0; x<3 ;x++){
       if(s.getShape()[y][x] == 1){
         defaultRect(playerColor,0);
         rect((gridBlockWidth*(s.getX()+x))+translateGridX+animateTranslatePlayerX,(gridBlockHeight*(s.getY()+y))+translateGridY+animateTranslatePlayerY,gridBlockWidth,gridBlockHeight);
       }
     }
+  }*/
+  //--2playerChrushCheck();
+}
+void playerChrushCheck(){
+  if(5 == playerFrameWalk || playerFrameWalk == 1){
+  P[0][1] = 1;
+  P[1][1] = 1;
+  
+  P[0][2] = 1;
+  P[1][2] = 1; 
+  }
+  else if(-5 == playerFrameWalk || playerFrameWalk == -1){
+  P[0][0] = 1;
+  P[1][0] = 1;
+  
+  P[0][1] = 1;
+  P[1][1] = 1;
+  }
+  else if(3<=playerFrameWalk){
+  P[0][0] = 0;
+  P[1][0] = 0;
+  
+  P[0][1] = 0;
+  P[1][1] = 0;
+  
+  P[0][2] = 1;
+  P[1][2] = 1;
+  }
+  else if(-3>=playerFrameWalk){
+  P[0][0] = 1;
+  P[1][0] = 1;
+  
+  P[0][1] = 0;
+  P[1][1] = 0;
+  
+  P[0][2] = 0;
+  P[1][2] = 0;
+  }
+  else if(0<playerFrameWalk){
+  P[0][0] = 0;
+  P[1][0] = 0;
+  System.out.println("oop");
+  P[0][2] = 1;
+  P[1][2] = 1;
+  }
+  else if(0>playerFrameWalk){
+  P[0][0] = 1;
+  P[1][0] = 1;
+ 
+  P[0][2] = 0;
+  P[1][2] = 0;
   }
 }
