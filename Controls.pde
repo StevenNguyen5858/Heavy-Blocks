@@ -55,11 +55,11 @@ void player1Controls(){
   }else{
     //move left:
     if((key == left || keyCode == leftCode) && blockCanMove(player1.getX()-1,player1.getY(),player1.getShape(),true)){
-      isWalking = -1;
+      player1.setX(player1.getX()-1);
     }
     //move right:
     if((key == right || keyCode == rightCode ) && blockCanMove(player1.getX()+1,player1.getY(),player1.getShape(),true)){
-      isWalking = 1;
+      player1.setX(player1.getX()+1);
     }
     //jump:
      if((key == jump || keyCode == jumpCode) && blockCanMove(player1.getX(),player1.getY()-1,player1.getShape(),true) &&
@@ -74,17 +74,16 @@ void player1ControlsR(){
   }
   if(key == left || keyCode == leftCode){
     leftK = false;
-    isWalking = 0;
   }
   if(key == right || keyCode == rightCode){
     rightK = false;  
-    isWalking = 0;
   }
   if(key == jump || keyCode == jumpCode){
     jumpK = false;  
   }
 }
 
+/*--2
 void movePlayerHorizontal(){
   if(playerFrameWalk == 5 || playerFrameWalk == -5){
     tempWalk = rest;
@@ -118,7 +117,7 @@ void movePlayerHorizontal(){
   }
  
 }
-
+*/
 
 
 

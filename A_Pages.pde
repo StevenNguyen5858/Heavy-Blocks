@@ -8,6 +8,7 @@ page pause = new page();
 page endP = new page();
 page levelsEditorP = new page();
 page editLevel = new page();
+page lvlTable = new page();
 void setupPages(){
   main = new page(mainScreenButtons,true,false,"main");
   levelsP = new page(levelsScreenButtons,false,false,"levels");
@@ -18,6 +19,7 @@ void setupPages(){
   endP = new page(winScreenButtons,false,false,"endP");
   levelsEditorP = new page(levelsEditorScreenButtons,false,false,"levelsEditor");
   editLevel = new page(editLevelScreenButtons,false,false,"editLevel");
+  lvlTable = new page(lvlTableScreenButtons,false,false,"lvlTable");
   pages.add(main);
   pages.add(levelsP);
   pages.add(play1);
@@ -27,6 +29,7 @@ void setupPages(){
   pages.add(endP);
   pages.add(levelsEditorP);
   pages.add(editLevel);
+  pages.add(lvlTable);
 }
 public class page{
   private ArrayList<button> pageButtons = new ArrayList<button>();

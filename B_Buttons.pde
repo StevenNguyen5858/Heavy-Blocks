@@ -8,6 +8,7 @@ ArrayList<button> pauseScreenButtons = new ArrayList<button>();
 ArrayList<button> winScreenButtons = new ArrayList<button>();
 ArrayList<button> levelsEditorScreenButtons = new ArrayList<button>();
 ArrayList<button> editLevelScreenButtons = new ArrayList<button>();
+ArrayList<button> lvlTableScreenButtons = new ArrayList<button>();
 button openPlayB = new button();
 button openLevelsB = new button();
   button tempB = new button();
@@ -87,6 +88,11 @@ void setupButtons(){
   editLevelScreenButtons.add(editorPauseB);
   editLevelScreenButtons.add(editorShowGridB);
   editLevelScreenButtons.add(editorShowLvlData);
+  
+  for(int i = 0; i<editLevelScreenButtons.size()-1; i++){
+    lvlTableScreenButtons.add(editLevelScreenButtons.get(i));
+    System.out.println(i);
+  }
   
   controlsScreenButtons.add(climbB);
   controlsScreenButtons.add(moveLeftB);

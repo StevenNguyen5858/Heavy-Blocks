@@ -56,12 +56,14 @@ int fitTextHeight(float fitHeight){
 }
 //----------@----------@----------@----------@----------@----------@----------  
 //----------@----------@----------@----------@----------@----------@----------  
+void backDrop(){
+  defaultRect(150,0);
+  rect(0,0,sW-1,sH-1);
+}
 //Draw Basic background to our screens
 void basicCorners(int h){
   h = h + startH[lvl-1];
   int space = h*50+51;
-  defaultRect(150,0);
-  rect(0,0,sW-1,sH-1);
   defaultRect(120,0);
   
   //topLeft

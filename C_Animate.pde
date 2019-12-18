@@ -106,6 +106,7 @@ void playerGravity(){
     playerGravityCycle = true;
   }  
 }
+/*--2
 void playerWalk(){
   if(playerWalkCycle){
     nowPlayerWalk = millis();
@@ -135,6 +136,7 @@ void playerWalk(){
   isWalking = 0;
   }  
 }
+*/
 //----------@----------@----------@----------@----------@----------@----------  
 //----------@----------@----------@----------@----------@----------@----------  
 //void animateFallingBlocks mini methods:

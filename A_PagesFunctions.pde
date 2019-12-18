@@ -27,6 +27,7 @@ void drawFrame(page p){
 }
 void screenLayout(page p){
  String name = p.specialFunctTag();
+ backDrop();
  //MainScreen page
  if(name.equals("main.pg")){
    basicCorners(2);
@@ -59,13 +60,20 @@ void screenLayout(page p){
    defaultText(0,0,30);
    text("Levels Editor",sW/2-(textWidth("Levels Editor")/2),50);
  }
- if(name.equals("editLevel.pg")){
-   basicCorners(lvl);
+ if(name.equals("editLevel.pg")){   
+   if(editorShowGridB.isSelected){
+      grid();  
+   }
    
+   basicCorners(lvl);
+    
    defaultText(0,0,30);
    text("Editing lvl " + lvl,sW/2-(textWidth("Editing lvl ")/2),60); 
  }
- 
+ if(name.equals("lvlTable.pg")){
+   basicCorners(lvl);
+   //--3
+ }
  //PlayScreen pages
  if(name.equals("play1.pg")){
    basicCorners(lvl);

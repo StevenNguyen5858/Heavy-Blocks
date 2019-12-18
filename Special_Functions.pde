@@ -123,7 +123,18 @@ boolean buttonFunctions(button b){
   }
   if(name.equals("editorShowGrid")){
     b.setIsSelected(true);
-    grid();
+    if(editLevel.isActive()){
+      drawFrame(editLevel);
+    }else{
+      drawFrame(lvlTable);  
+    }
+    return true;
+  }
+  if(name.equals("editorShowLvlData")){
+    editorShowGridB.setIsSelected(false);
+    b.setIsSelected(true);
+    
+    activatePage(lvlTable);
     return true;
   }
   return false;
@@ -261,6 +272,15 @@ void drawButton(button b){
     text("  '" + jump + "'", b.getX()+5 + textWidth("Climb "),b.getY()+b.getH()*.73);
     defaultText(0,0,30);
     text("|", b.getX()+65,b.getY()+b.getH()*.78);
+  }
+  
+  if(name.equals("editorShowGrid")){
+    for(int y = 0; y<4; y++){
+      line(b.getX(),b.getY()+(6*y),b.getX()+b.getW(),b.getY()+(6*y));
+    }
+    for(int x = 0; x<4; x++){
+      line(b.getX()+(6*x),b.getY(),b.getX()+(6*x),b.getY()+b.getH());
+    }
   }
   
   if(name.equals("escToMainScreen")){

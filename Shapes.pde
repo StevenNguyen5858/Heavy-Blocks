@@ -25,8 +25,8 @@ boolean drawNewBlock = false;
    {0,0,0},
    {0,0,0}};
 int[][] P = 
-  {{0,1,0},
-   {0,1,0},
+  {{1,0,0},
+   {1,0,0},
    {0,0,0}};
 int[][] SL = 
   {{1,1,1},
@@ -153,12 +153,21 @@ void drawShape(shape s){
 float animateTranslatePlayerX = 0;
 int animateTranslatePlayerY = 0;
 void drawPlayer(shape s){
+   for(int y = 0; y<3; y++){
+    for(int x = 0; x<3 ;x++){
+      if(s.getShape()[y][x] == 1){
+        defaultRect(#E300F0,0);
+        rect((gridBlockWidth*(s.getX()+x))+translateGridX+animateTranslatePlayerX,(gridBlockHeight*(s.getY()+y))+translateGridY+animateTranslatePlayerY,gridBlockWidth,gridBlockHeight);
+      }
+    }
+  }
+  /*
   if(Math.abs(playerFrameWalk)!=0 && Math.abs(playerFrameWalk)<=4){
     animateTranslatePlayerX = (25/3)*playerFrameWalk;
   }else{
     animateTranslatePlayerX = 0;
   }
-  image(tempWalk,(gridBlockWidth*(s.getX()))+translateGridX+animateTranslatePlayerX,(gridBlockHeight*(s.getY()))+translateGridY+animateTranslatePlayerY);
+  //--2image(tempWalk,(gridBlockWidth*(s.getX()))+translateGridX+animateTranslatePlayerX,(gridBlockHeight*(s.getY()))+translateGridY+animateTranslatePlayerY);
   if(playerFrameWalk == 5){
     playerFrameWalk = 1;
   }
@@ -166,17 +175,10 @@ void drawPlayer(shape s){
     playerFrameWalk = -1;  
   }
   movePlayerHorizontal();
-
-  /*for(int y = 0; y<3; y++){
-    for(int x = 0; x<3 ;x++){
-      if(s.getShape()[y][x] == 1){
-        defaultRect(playerColor,0);
-        rect((gridBlockWidth*(s.getX()+x))+translateGridX+animateTranslatePlayerX,(gridBlockHeight*(s.getY()+y))+translateGridY+animateTranslatePlayerY,gridBlockWidth,gridBlockHeight);
-      }
-    }
-  }*/
+  --2*/
   //--2playerChrushCheck();
 }
+/*--2
 void playerChrushCheck(){
   if(5 == playerFrameWalk || playerFrameWalk == 1){
   P[0][1] = 1;
@@ -227,3 +229,4 @@ void playerChrushCheck(){
   P[1][2] = 0;
   }
 }
+*/
