@@ -35,12 +35,12 @@ boolean buttonFunctions(button b){
     setupLevel();
     return true;
   }
-  if((name.equals("tempLevelsEdit")&&levelStars[b.getButtonTag()-1]>0) ){
+  if((name.equals("tempLevelsEdit")) && levelStars[b.getButtonTag()-1]>0){
     lvl = b.getButtonTag();
     lvlLock = lvl;
-    activatePage(editLevel);
+    activatePage(lvlTable);
     setupLevel();
-    //--2
+    //--2 && levelStars[b.getButtonTag()-1]>0
     return true;
   }
   if(name.equals("PlayB")){
@@ -123,11 +123,7 @@ boolean buttonFunctions(button b){
   }
   if(name.equals("editorShowGrid")){
     b.setIsSelected(true);
-    if(editLevel.isActive()){
-      drawFrame(editLevel);
-    }else{
-      drawFrame(lvlTable);  
-    }
+    activatePage(editLevel);
     return true;
   }
   if(name.equals("editorShowLvlData")){
@@ -177,19 +173,64 @@ void drawButton(button b){
   if(name.equals("tempLevelsEdit")){
     defaultText(0,0,25);
     text("lvl." + b.getButtonTag(),b.getX()+b.getW()/2-(textWidth("lvl"+b.getButtonTag()))/2,b.getY()+(b.getH()*.50) ); 
-    for(int i = 1; i<=levelStars[b.getButtonTag()-1]; i++){
-      defaultRect(255,234,0,0);
-      rect(b.getX()-5+20*i,b.getY()+(b.getH()*.70), 10,10);
-    }
     if(levelStars[b.getButtonTag()-1]==0){
       fill(0,120);
       rect(b.getX(),b.getY(),b.getW(),b.getH());
+    }
+    /*else{
+      defaultRect(150,0);
+      rect(b.getX()+15,b.getY()+b.getH()*.65,b.getH()-30,15);
+      defaultText(0,0,15);
+      text("Edit",b.getX()+25,b.getY()+b.getH()*.82);
+    }*/
+  }
+  if(name.equals("tempTable")){
+    if(b.getButtonTagY() == -1){
+      if(b.getButtonTagX() == 1){
+        defaultText(0,0,10);
+        text("Index:",b.getX()+3,b.getY() + b.getH()*.8);
+      }
+      if(b.getButtonTagX() == 2){
+        defaultText(0,0,10);
+        text("X:",b.getX()+3,b.getY() + b.getH()*.8);
+      }
+      if(b.getButtonTagX() == 3){
+        defaultText(0,0,10);
+        text("Shape:",b.getX()+3,b.getY() + b.getH()*.8);
+      }
+      if(b.getButtonTagX() == 4){
+        defaultText(0,0,10);
+        text("Speed:",b.getX()+3,b.getY() + b.getH()*.8);
+      }
+    }
+    
+    if(b.getButtonTagY() != -1){
+      //index:
+      if(b.getButtonTagX() == 1){
+        defaultText(0,0,15);
+        text(b.getButtonTagY(),b.getX()+3,b.getY()+17);
+      } 
+      //x;
+      if(b.getButtonTagX() == 2){
+        defaultText(0,0,15);
+        text(lvlX0[b.getButtonTagY()],b.getX()+3,b.getY()+17);
+      }
+      //shapes
+      if(b.getButtonTagX() == 3){
+        defaultText(0,0,15);
+        text(shapes0[b.getButtonTagY()],b.getX()+3,b.getY()+17);
+      }
+      //speed
+      if(b.getButtonTagX() == 4){
+        defaultText(0,0,15);
+        text(blockSpeed0[b.getButtonTagY()],b.getX()+3,b.getY()+17);
+      }
     }
   }
   if(name.equals("openLevelsEditor")){
     //--2;
     defaultText(255,255,15);
-    text("Edit Levels",b.getX()+b.getW()/2-(textWidth("Edit Levels"))/2,b.getY()+(b.getH()*.75) );
+    text("Level Data",b.getX()+b.getW()/2-(textWidth("Level Data"))/2,b.getY()+(b.getH()*.75) );
   }
   if(name.equals("PlayB")){
     defaultText(0,225,31,-1,40);

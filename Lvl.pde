@@ -194,3 +194,9 @@ class level{
     return star;
   }
 }
+
+
+void changeGameValue(int indexX, int indexY){
+ 
+  
+}

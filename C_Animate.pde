@@ -69,7 +69,7 @@ void animateFallingBlocks(){
     //shapes are set values into our drawBinaryBlocksPB therefore drawShape is unecessary
     //drawShape(block);
     drawPlayer(player1);
-    grid();
+    //-2grid();
     //drawBinaryBlocks();
     drawBinaryBlocksPB();
     drawPageButtons(play2);

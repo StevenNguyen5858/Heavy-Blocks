@@ -58,7 +58,7 @@ void screenLayout(page p){
    basicCorners(2);
    
    defaultText(0,0,30);
-   text("Levels Editor",sW/2-(textWidth("Levels Editor")/2),50);
+   text("Level Data",sW/2-(textWidth("Level Data")/2),50);
  }
  if(name.equals("editLevel.pg")){   
    if(editorShowGridB.isSelected){
@@ -145,6 +145,30 @@ void drawPageButtons(page p){
       }
     }
   }
+  if(name.equals("lvlTable.pg")){
+    fill(0,50);
+    rect(60,40,35*4,sH-80);
+    rect(sW-60-(35*5),40,35*4,sH-80);
+    for(int y = 1; y<=lvlX0.length+1 && y<=20; y++){
+      for(int x = 1; x<=4; x++){
+        tempTableB = new button(210,210,210,0,"tempTable",25+35*x,20*y+20,35,20);
+        tempTableB.setButtonTagX(x);
+        tempTableB.setButtonTagY(y-2);
+        drawButton(tempTableB);
+      }
+    }
+    if(lvlX0.length+1>20){
+      for(int y = 1; y<=lvlX0.length-19 && y<=20; y++){
+        for(int x = 1; x<=4; x++){
+        tempTableB = new button(210,210,210,0,"tempTable",25+35*x+305,20*y+20,35,20);
+        tempTableB.setButtonTagX(x);
+        tempTableB.setButtonTagY(y+18);
+        drawButton(tempTableB);
+        }
+      }  
+    }
+
+  }
   
   for(int i = 0; i<p.getPageButtons().size(); i++){
     drawButton(p.getPageButtons().get(i));
@@ -171,6 +195,28 @@ void hitCheckPage(page p){
         }
       }
     }
+    if(name.equals("lvlTable.pg")){
+      for(int y = 1; y<=lvlX0.length+1; y++){
+        for(int x = 1; x<=5; x++){
+          tempTableB = new button(210,210,210,0,"tempTable",25+35*x,20*y+20,35,20);
+          tempTableB.setButtonTagX(x);
+          tempTableB.setButtonTagY(y-2);
+          toggleSelect(tempTableB);
+        }
+      }
+      if(lvlX0.length+1>20){
+        for(int y = 1; y<=lvlX0.length-19 && y<=20; y++){
+          for(int x = 1; x<=4; x++){
+            tempTableB = new button(210,210,210,0,"tempTable",25+35*x+305,20*y+20,35,20);
+            tempTableB.setButtonTagX(x);
+            tempTableB.setButtonTagY(y+18);
+            toggleSelect(tempTableB);
+          }
+        }  
+      }
+    }
+    
+    
     for(int i = 0; i<p.getPageButtons().size(); i++){
       button temp = p.getPageButtons().get(i);
       toggleSelect(temp); 

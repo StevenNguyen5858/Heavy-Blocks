@@ -217,7 +217,7 @@ void playerChrushCheck(){
   else if(0<playerFrameWalk){
   P[0][0] = 0;
   P[1][0] = 0;
-  System.out.println("oop");
+  
   P[0][2] = 1;
   P[1][2] = 1;
   }

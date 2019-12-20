@@ -13,6 +13,7 @@ button openPlayB = new button();
 button openLevelsB = new button();
   button tempB = new button();
   button tempEditB = new button();
+  button tempTableB = new button();
 button openControlsB = new button();
 button openSettingsB = new button();
 
@@ -132,6 +133,8 @@ public class button{
   private boolean isSelected = false;
   private boolean willDisplayName = false;
   private int buttonTag = 0;
+  private int buttonTagX = 0;
+  private int buttonTagY = 0;
   //Default constructor
   button(){
   }
@@ -198,7 +201,19 @@ public class button{
   public void setButtonTag(int buttonTag){
     this.buttonTag = buttonTag;
   }
+  public void setButtonTagX(int buttonTagX){
+    this.buttonTagX = buttonTagX;  
+  }
+  public void setButtonTagY(int buttonTagY){
+    this.buttonTagY = buttonTagY;  
+  }
   public int getButtonTag(){
     return buttonTag;
+  }
+  public int getButtonTagX(){
+    return buttonTagX;
+  }
+  public int getButtonTagY(){
+    return buttonTagY;
   }
 }
