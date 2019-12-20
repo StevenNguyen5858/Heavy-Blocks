@@ -12,7 +12,9 @@ boolean buttonFunctions(button b){
     lvlLock = lvl;
     activatePage(play1); 
     setgBIA();
-    setupLevel();
+    if(pressedSave == false){
+      setupLevel();
+    }
     return true;
   }
   if(name.equals("Levels") || name.equals("backToLevelsWB")){
